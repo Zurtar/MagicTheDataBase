@@ -347,7 +347,7 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI().setVisible(true);
             }
@@ -380,7 +380,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel resultPageCountDisplay;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
-    private javax.swing.JTable resultTable;
+    public static javax.swing.JTable resultTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JTextField setDisplay;
