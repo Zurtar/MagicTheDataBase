@@ -128,8 +128,11 @@ public class GUI extends javax.swing.JFrame {
 
         cardNameLabel.setText("Card Name:");
 
+        cardNameDisplay.setEditable(false);
+
         setLabel.setText("Set(s):");
 
+        setDisplay.setEditable(false);
         setDisplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setDisplayActionPerformed(evt);
@@ -140,7 +143,13 @@ public class GUI extends javax.swing.JFrame {
 
         cardTypeLabel.setText("Card Type:");
 
+        manaCostDisplay.setEditable(false);
+
+        cardTypeDisplay.setEditable(false);
+
         colourLabel.setText("Colour(s):");
+
+        colourDisplay.setEditable(false);
 
         filterColourRadio.setText("Search By Colour");
 
@@ -164,6 +173,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Oracle Text:");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
