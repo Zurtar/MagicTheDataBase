@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ScryfallInteraction {
 
-    public ArrayList<Card> search(String query) {
+    public static ArrayList<Card> search(String query) {
         ArrayList<Card> cardList;
         String prefix = getPrefix();
 
@@ -26,7 +26,7 @@ public class ScryfallInteraction {
         return cardList;
     }
 
-    private String getPrefix() {
+    private static String getPrefix() {
         String prefix = "";
         return prefix;
     }

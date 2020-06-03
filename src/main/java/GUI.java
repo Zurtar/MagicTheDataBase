@@ -1,19 +1,20 @@
+
+import forohfor.scryfall.api.Card;
+import java.util.ArrayList;
+import javax.swing.JTable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Steve
  */
 public class GUI extends javax.swing.JFrame {
 
-    boolean cmcSearch;
-    boolean cardSearch;
-    boolean colourSearch;
-    boolean creatureSearch;
+    boolean cmcSearch, creatureSearch, cardSearch, colourSearch;
 
     /**
      * Creates new form GUI
@@ -124,6 +125,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
@@ -336,6 +342,20 @@ public class GUI extends javax.swing.JFrame {
     private void setDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDisplayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_setDisplayActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        ArrayList<Card> cardList = ScryfallInteraction.search(searchField.getText());
+        setResultTable(cardList);
+    }//GEN-LAST:event_searchButtonActionPerformed
+    private void setResultTable(ArrayList<Card> cardList) {
+            for (int colomnPosition = 0; colomnPosition < cardList.size(); colomnPosition++) {
+                for(int rowPosition = 0; rowPosition < 5; rowPosition++){
+                    resultTable.setValueAt(cardList.get(colomnPosition).getName(), rowPosition, colomnPosition);
+                }
+                
+            }
+        }
+    
 
     /**
      * @param args the command line arguments
