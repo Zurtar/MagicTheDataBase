@@ -17,8 +17,7 @@ public class ScryfallInteraction {
         ArrayList<Card> cardList;
         String prefix = getPrefix();
 
-        query = "\"" + query + "\"";
-        cardList = MTGCardQuery.search(prefix + query);
+        cardList = MTGCardQuery.search(prefix +" "+ query);
 
         if (cardList.isEmpty()) {
             GUI.resultTable.setValueAt("No Cards Were Found With The Given Search Term.", 0, 0);
