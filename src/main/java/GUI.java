@@ -1,4 +1,6 @@
+
 import forohfor.scryfall.api.Card;
+import java.util.ArrayList;
 
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
@@ -22,9 +24,11 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void radioButtonGroupSetup(){
+    private void radioButtonGroupSetup() {
         Enumeration<AbstractButton> buttonList = radioButtonGroup.getElements();
-    };
+    }
+
+    ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -390,14 +394,15 @@ public class GUI extends javax.swing.JFrame {
         setResultTable(cardList);
     }//GEN-LAST:event_searchButtonActionPerformed
     private void setResultTable(ArrayList<Card> cardList) {
-            for (int colomnPosition = 0; colomnPosition < cardList.size(); colomnPosition++) {
-                for(int rowPosition = 0; rowPosition < 5; rowPosition++){
-                    resultTable.setValueAt(cardList.get(colomnPosition).getName(), rowPosition, colomnPosition);
-                }
-                
-            }
+        for (int i = 0; i < cardList.size(); i++) {
+            Card currentCard = cardList.get(i);
+            resultTable.setValueAt(currentCard.getName(), i, 0);
+            resultTable.setValueAt(currentCard.getSetCode(), i, 0);
+            resultTable.setValueAt(currentCard.getManaCost(), i, 0);
+            resultTable.setValueAt(currentCard.getTypeLine(), i, 0);
+            resultTable.setValueAt(currentCard.getColors(), i, 0);
         }
-    
+    }
 
     /**
      * @param args the command line arguments
