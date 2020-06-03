@@ -10,6 +10,11 @@
  */
 public class GUI extends javax.swing.JFrame {
 
+    boolean cmcSearch;
+    boolean cardSearch;
+    boolean colourSearch;
+    boolean creatureSearch;
+
     /**
      * Creates new form GUI
      */
@@ -322,7 +327,10 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-        // TODO add your handling code here:
+        cmcSearch = filterCMCRadio.isSelected();
+        cardSearch = filterCardRadio.isSelected();
+        colourSearch = filterColourRadio.isSelected();
+        creatureSearch = filterCreatureTypeRadio.isSelected();
     }//GEN-LAST:event_searchFieldActionPerformed
 
     private void setDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDisplayActionPerformed
@@ -357,7 +365,7 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI().setVisible(true);
             }
