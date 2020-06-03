@@ -1,3 +1,8 @@
+
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.JRadioButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,17 +15,16 @@
  */
 public class GUI extends javax.swing.JFrame {
 
-    boolean cmcSearch;
-    boolean cardSearch;
-    boolean colourSearch;
-    boolean creatureSearch;
-
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
     }
+
+    private void radioButtonGroupSetup(){
+        Enumeration<AbstractButton> buttonList = radioButtonGroup.getElements();
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +35,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        radioButtonGroup = new javax.swing.ButtonGroup();
         resultScrollPane = new javax.swing.JScrollPane();
         resultTable = new javax.swing.JTable();
         cardImageLabel = new javax.swing.JLabel();
@@ -62,6 +66,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        cardTypeComboBox = new javax.swing.JComboBox<>();
+        cmcComboBox = new javax.swing.JComboBox<>();
+        colourComboBox = new javax.swing.JComboBox<>();
+        filterOracleRadio = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,12 +164,16 @@ public class GUI extends javax.swing.JFrame {
 
         colourDisplay.setEditable(false);
 
+        radioButtonGroup.add(filterColourRadio);
         filterColourRadio.setText("Search By Colour");
 
+        radioButtonGroup.add(filterCMCRadio);
         filterCMCRadio.setText("Search By CMC");
 
+        radioButtonGroup.add(filterCardRadio);
         filterCardRadio.setText("Search By Cardtype");
 
+        radioButtonGroup.add(filterCreatureTypeRadio);
         filterCreatureTypeRadio.setText("Search By Creature type");
 
         resultPageCountLabel.setText("Result Pages: ");
@@ -182,6 +194,20 @@ public class GUI extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
+
+        cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
+        cmcComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmcComboBoxActionPerformed(evt);
+            }
+        });
+
+        colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
+
+        radioButtonGroup.add(filterOracleRadio);
+        filterOracleRadio.setText("Search By Oracle Text");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,10 +230,20 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(filterColourRadio)
                                     .addComponent(filterCMCRadio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(colourComboBox, 0, 69, Short.MAX_VALUE)
+                                    .addComponent(cmcComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterCardRadio)
-                                    .addComponent(filterCreatureTypeRadio))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(filterCardRadio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(filterCreatureTypeRadio)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(filterOracleRadio)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
@@ -266,13 +302,18 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(filterCMCRadio)
-                                    .addComponent(filterCardRadio))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(filterCardRadio)
+                                        .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(filterColourRadio)
-                                    .addComponent(filterCreatureTypeRadio)))
+                                    .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filterCreatureTypeRadio)
+                                    .addComponent(filterOracleRadio)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cardImageHeaderLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,16 +367,18 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-        cmcSearch = filterCMCRadio.isSelected();
-        cardSearch = filterCardRadio.isSelected();
-        colourSearch = filterColourRadio.isSelected();
-        creatureSearch = filterCreatureTypeRadio.isSelected();
+
     }//GEN-LAST:event_searchFieldActionPerformed
 
     private void setDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDisplayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_setDisplayActionPerformed
+
+    private void cmcComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmcComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmcComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,21 +416,24 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel cardImageHeaderLabel;
     private javax.swing.JLabel cardImageLabel;
     private javax.swing.JTextField cardNameDisplay;
     private javax.swing.JLabel cardNameLabel;
+    public static javax.swing.JComboBox<String> cardTypeComboBox;
     private javax.swing.JTextField cardTypeDisplay;
     private javax.swing.JLabel cardTypeLabel;
+    public static javax.swing.JComboBox<String> cmcComboBox;
+    public static javax.swing.JComboBox<String> colourComboBox;
     private javax.swing.JTextField colourDisplay;
     private javax.swing.JLabel colourLabel;
     private javax.swing.JLabel currentPageDisplay;
     private javax.swing.JLabel currentPageLabel;
-    private javax.swing.JRadioButton filterCMCRadio;
-    private javax.swing.JRadioButton filterCardRadio;
-    private javax.swing.JRadioButton filterColourRadio;
-    private javax.swing.JRadioButton filterCreatureTypeRadio;
+    public static javax.swing.JRadioButton filterCMCRadio;
+    public static javax.swing.JRadioButton filterCardRadio;
+    public static javax.swing.JRadioButton filterColourRadio;
+    public static javax.swing.JRadioButton filterCreatureTypeRadio;
+    public static javax.swing.JRadioButton filterOracleRadio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -395,6 +441,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel manaCostLabel;
     private javax.swing.JButton nextPageButton;
     private javax.swing.JButton prevPageButton;
+    private javax.swing.ButtonGroup radioButtonGroup;
     private javax.swing.JLabel resultPageCountDisplay;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
