@@ -9,7 +9,11 @@
  * @author Stevep
  */
 import forohfor.scryfall.api.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class ScryfallInteraction {
 
@@ -42,5 +46,16 @@ public class ScryfallInteraction {
         }
 
         return prefix;
+    }
+    
+        public static ImageIcon getImage(Card c, String imageType) {
+        ImageIcon icon = null;
+        try {
+            URL url = new URL(c.getImageURI(imageType));
+            BufferedImage img = ImageIO.read(url);
+            icon = new ImageIcon(img);
+        } catch (Exception ex) {
+        }
+        return icon;
     }
 }

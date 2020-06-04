@@ -1,22 +1,8 @@
 
 import forohfor.scryfall.api.Card;
-import forohfor.scryfall.api.CardFace;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.util.ArrayList;
 
-import java.util.Enumeration;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
-import javax.swing.JRadioButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,19 +24,28 @@ public class GUI extends javax.swing.JFrame {
      */
     DefaultTableModel tableModel;
     ArrayList<Card> cardList;
-    
+
     public GUI() {
         initComponents();
         clearResultTable();
-        
+
         ListSelectionModel selectionModel = resultTable.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                selectionValueChanged();
+                /**
+                 * we do this so that when the value is changing from selected
+                 * to deselected it does not fetch the image for nothing. This
+                 * prevents our selectionValueChanged() method from being called
+                 * twice every time a card is selected
+                 */
+                if (e.getValueIsAdjusting()) {
+                    return;
+                }
+                updateCardInfo();
             }
         });
-        
+
     }
 
     /**
@@ -98,7 +93,9 @@ public class GUI extends javax.swing.JFrame {
         filterNameRadio = new javax.swing.JRadioButton();
         creatureTypeComboBox = new javax.swing.JComboBox<>();
 
-        largeImageLabel.setPreferredSize(new java.awt.Dimension(488, 680));
+        largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
+        largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
+        largeImageLabel.setPreferredSize(new java.awt.Dimension(488, 690));
 
         largeImageHeader.setText("Large Image Window");
 
@@ -114,8 +111,8 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(largeImageFrameLayout.createSequentialGroup()
                 .addComponent(largeImageHeader)
                 .addGap(11, 11, 11)
-                .addComponent(largeImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(largeImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,6 +141,11 @@ public class GUI extends javax.swing.JFrame {
         cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
+        cardImageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cardImageLabelMouseClicked(evt);
+            }
+        });
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +158,7 @@ public class GUI extends javax.swing.JFrame {
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
 
-        cardImageHeaderLabel.setText("Card Image");
+        cardImageHeaderLabel.setText("Click Image For Large Version");
 
         cardNameLabel.setText("Card Name:");
 
@@ -235,66 +237,62 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchButton)))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(titleLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(searchButton)))
-                                .addGap(26, 26, 26)
+                                    .addComponent(filterColourRadio)
+                                    .addComponent(filterCMCRadio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(colourComboBox, 0, 90, Short.MAX_VALUE)
+                                    .addComponent(cmcComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(filterOracleRadio)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(filterColourRadio)
-                                            .addComponent(filterCMCRadio))
+                                        .addComponent(filterCreatureTypeRadio)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(colourComboBox, 0, 90, Short.MAX_VALUE)
-                                            .addComponent(cmcComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(filterOracleRadio)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(filterCreatureTypeRadio)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(filterCardRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(filterNameRadio)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(138, 138, 138)
-                                        .addComponent(cardImageHeaderLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(100, 100, 100)
-                                        .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1367, 1367, 1367)
+                                .addComponent(filterCardRadio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(filterNameRadio)))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardImageHeaderLabel))
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1367, 1367, 1367)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cardNameLabel)
-                                            .addComponent(setLabel)
-                                            .addComponent(manaCostLabel)
-                                            .addComponent(cardTypeLabel)
-                                            .addComponent(colourLabel))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cardNameDisplay)
-                                            .addComponent(setDisplay)
-                                            .addComponent(manaCostDisplay)
-                                            .addComponent(cardTypeDisplay)
-                                            .addComponent(colourDisplay)))
-                                    .addComponent(jLabel1))))
+                                    .addComponent(cardNameLabel)
+                                    .addComponent(setLabel)
+                                    .addComponent(manaCostLabel)
+                                    .addComponent(cardTypeLabel)
+                                    .addComponent(colourLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cardNameDisplay)
+                                    .addComponent(setDisplay)
+                                    .addComponent(manaCostDisplay)
+                                    .addComponent(cardTypeDisplay)
+                                    .addComponent(colourDisplay)))
+                            .addComponent(jLabel1))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -368,7 +366,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         clearResultTable();
-        
+
         cardList = ScryfallInteraction.search(searchField.getText());
         System.out.println(cardList.size());
         if (cardList.isEmpty()) {
@@ -386,29 +384,32 @@ public class GUI extends javax.swing.JFrame {
     private void setDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDisplayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_setDisplayActionPerformed
-    
-    private void selectionValueChanged() {
-        Card c = cardList.get(resultTable.getSelectedRow());
-        
-        try {
-            URL url = new URL(c.getImageURI("small"));
-            BufferedImage img = ImageIO.read(url);
-            ImageIcon icon = new ImageIcon(img);
-            cardImageLabel.setIcon(icon);
-            largeImageLabel.setIcon(icon);
-        } catch (IOException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+
+    private void cardImageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImageLabelMouseClicked
+        if (resultTable.getSelectedRow() == -1) {
+            searchField.setText("Select A Card From The List Before Seeing An Enlarged Image");
+            return;
         }
-        
+
+        Card c = cardList.get(resultTable.getSelectedRow());
+        largeImageLabel.setIcon(ScryfallInteraction.getImage(c, "normal"));
+        largeImageFrame.setBounds(0, 0, 488, 721);
+        largeImageFrame.setVisible(true);
+
+    }//GEN-LAST:event_cardImageLabelMouseClicked
+
+    private void updateCardInfo() {
+        Card c = cardList.get(resultTable.getSelectedRow());
+        cardImageLabel.setIcon(ScryfallInteraction.getImage(c, "small"));
+
         cardNameDisplay.setText(c.getName());
         setDisplay.setText(c.getSetCode());
         manaCostDisplay.setText(c.getManaCost());
         cardTypeDisplay.setText(c.getTypeLine());
         colourDisplay.setText(c.getColorIdentity().get(0));
         cardOracleDisplay.setText(c.getOracleText());
-        
     }
-    
+
     private void setResultTable(ArrayList<Card> cardList) {
         //updating the size of our JTable
         tableModel.setRowCount(cardList.size());
@@ -424,12 +425,12 @@ public class GUI extends javax.swing.JFrame {
             resultTable.setValueAt(currentCard.getColorIdentity(), i, 4);
         }
     }
-    
+
     private void addRow() {
         tableModel.addRow(new Object[5]);
         tableModel.fireTableDataChanged();
     }
-    
+
     private void clearResultTable() {
         tableModel = new DefaultTableModel(
                 new Object[][]{},
@@ -454,21 +455,21 @@ public class GUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                    
+
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
