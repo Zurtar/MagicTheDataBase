@@ -17,11 +17,9 @@ public class ScryfallInteraction {
         ArrayList<Card> cardList;
         String prefix = getPrefix();
 
-        cardList = MTGCardQuery.search(prefix +" "+ query);
-
-        if (cardList.isEmpty()) {
-            GUI.resultTable.setValueAt("No Cards Were Found With The Given Search Term.", 0, 0);
-        }
+//        cardList = MTGCardQuery.search(prefix +" "+ query);
+        System.out.println(prefix + query);
+        cardList = MTGCardQuery.search(prefix + query);
 
         return cardList;
     }
@@ -30,16 +28,16 @@ public class ScryfallInteraction {
         String prefix = "";
 
         if (GUI.filterCMCRadio.isSelected()) {
-            prefix = "c:" + GUI.cardTypeComboBox.getSelectedItem().toString();
+            prefix = "cmc=" + GUI.cmcComboBox.getSelectedItem().toString() + " ";
         } else if (GUI.filterCardRadio.isSelected()) {
-            prefix = "t:" + GUI.cardTypeComboBox.getSelectedItem().toString();
+            prefix = "t:" + GUI.cardTypeComboBox.getSelectedItem().toString() + " ";
         } else if (GUI.filterColourRadio.isSelected()) {
-            prefix = "c:" + GUI.colourComboBox.getSelectedItem().toString();
+            prefix = "c:" + GUI.colourComboBox.getSelectedItem().toString() + " ";
         } else if (GUI.filterCreatureTypeRadio.isSelected()) {
-            prefix = "t:";
+            prefix = "t:" + GUI.creatureTypeComboBox.getSelectedItem() + " ";
         } else if (GUI.filterOracleRadio.isSelected()) {
             prefix = "o:";
-        } else {
+        } else if (GUI.filterNameRadio.isSelected()) {
             prefix = "";
         }
 

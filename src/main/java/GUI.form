@@ -31,8 +31,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="resultPageCountLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="resultScrollPane" min="-2" pref="1316" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="titleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -42,97 +45,80 @@
                                       <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="filterColourRadio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="filterCMCRadio" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="colourComboBox" pref="69" max="32767" attributes="0"/>
-                                  <Component id="cmcComboBox" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="filterColourRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="filterCMCRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="colourComboBox" pref="90" max="32767" attributes="0"/>
+                                          <Component id="cmcComboBox" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="filterOracleRadio" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="filterCreatureTypeRadio" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="creatureTypeComboBox" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="filterCardRadio" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cardTypeComboBox" min="-2" pref="91" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="filterCreatureTypeRadio" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="filterOracleRadio" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="cardImageHeaderLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="setLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cardNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="setDisplay" max="32767" attributes="0"/>
-                                      <Component id="cardNameDisplay" pref="92" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cardTypeLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="manaCostLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="cardTypeDisplay" min="-2" pref="92" max="-2" attributes="0"/>
-                                      <Component id="manaCostDisplay" min="-2" pref="92" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="colourLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cardTypeComboBox" min="-2" pref="90" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="colourDisplay" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Component id="filterNameRadio" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                                      <Component id="cardImageHeaderLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="cardImageLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cardImageLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1367" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cardNameLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="setLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="manaCostLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cardTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="colourLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="setDisplay" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="cardNameDisplay" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="manaCostDisplay" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="cardTypeDisplay" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="colourDisplay" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="resultPageCountLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="resultPageCountDisplay" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="currentPageLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="currentPageDisplay" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="prevPageButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="nextPageButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="resultScrollPane" min="-2" pref="1349" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -142,84 +128,77 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="resultPageCountLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="cardImageHeaderLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cardImageLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cardNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cardNameDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="setLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="setDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="manaCostDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="manaCostLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cardTypeDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cardTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="colourDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="colourLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="218" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="filterCMCRadio" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="cmcComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="filterCardRadio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cardTypeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="filterCreatureTypeRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="creatureTypeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="filterColourRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="colourComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="filterCreatureTypeRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="filterOracleRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="cardImageHeaderLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cardImageLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="filterCardRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cardTypeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="filterNameRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="searchField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="resultScrollPane" min="-2" pref="805" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cardNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cardNameDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="setLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="setDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="manaCostLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="manaCostDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cardTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cardTypeDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="colourLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="colourDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="218" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="searchField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="resultScrollPane" min="-2" pref="700" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="resultPageCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="resultPageCountDisplay" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="currentPageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="currentPageDisplay" min="-2" pref="14" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="prevPageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nextPageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -324,7 +303,7 @@
     <Component class="javax.swing.JLabel" name="titleLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="24" style="1"/>
+          <Font name="Tahoma" size="36" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="66" red="0" type="rgb"/>
@@ -395,7 +374,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="radioButtonGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Search By Colour"/>
+        <Property name="text" type="java.lang.String" value="Filter By Colour"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -406,7 +385,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="radioButtonGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Search By CMC"/>
+        <Property name="text" type="java.lang.String" value="Filter By CMC"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -417,8 +396,11 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="radioButtonGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Search By Cardtype"/>
+        <Property name="text" type="java.lang.String" value="Filter By Cardtype"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterCardRadioActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
@@ -435,42 +417,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="resultPageCountLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Result Pages: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="resultPageCountDisplay">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="currentPageLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Current Page: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="currentPageDisplay">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="prevPageButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Prev. Page"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="nextPageButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Next. Page"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -537,6 +483,29 @@
         <Property name="text" type="java.lang.String" value="Search By Oracle Text"/>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="filterNameRadio">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="radioButtonGroup"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Search By Name (Default)"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="creatureTypeComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Advisor&quot;,&quot;Aetherborn&quot;,&quot;Ally&quot;,&quot;Angel&quot;,&quot;Antelope&quot;,&quot;Ape&quot;,&quot;Archer&quot;,&quot;Archon&quot;,&quot;Army&quot;,&quot;Artificer&quot;,&quot;Assassin&quot;,&quot;Assembly-Worker&quot;,&quot;Atog&quot;,&quot;Aurochs&quot;,&quot;Avatar&quot;,&quot;Azra&quot;,&quot;Badger&quot;,&quot;Barbarian&quot;,&quot;Basilisk&quot;,&quot;Bat&quot;,&quot;Bear&quot;,&quot;Beast&quot;,&quot;Beeble&quot;,&quot;Berserker&quot;,&quot;Bird&quot;,&quot;Blinkmoth&quot;,&quot;Boar&quot;,&quot;Bringer&quot;,&quot;Brushwagg&quot;,&quot;Camarid&quot;,&quot;Camel&quot;,&quot;Caribou&quot;,&quot;Carrier&quot;,&quot;Cat&quot;,&quot;Centaur&quot;,&quot;Cephalid&quot;,&quot;Chimera&quot;,&quot;Citizen&quot;,&quot;Cleric&quot;,&quot;Cockatrice&quot;,&quot;Construct&quot;,&quot;Coward&quot;,&quot;Crab&quot;,&quot;Crocodile&quot;,&quot;Cyclops&quot;,&quot;Dauthi&quot;,&quot;Demigod&quot;,&quot;Demon&quot;,&quot;Deserter&quot;,&quot;Devil&quot;,&quot;Dinosaur&quot;,&quot;Djinn&quot;,&quot;Dragon&quot;,&quot;Drake&quot;,&quot;Dreadnought&quot;,&quot;Drone&quot;,&quot;Druid&quot;,&quot;Dryad&quot;,&quot;Dwarf&quot;,&quot;Efreet&quot;,&quot;Egg&quot;,&quot;Elder&quot;,&quot;Eldrazi&quot;,&quot;Elemental&quot;,&quot;Elephant&quot;,&quot;Elf&quot;,&quot;Elk&quot;,&quot;Eye&quot;,&quot;Faerie&quot;,&quot;Ferret&quot;,&quot;Fish&quot;,&quot;Flagbearer&quot;,&quot;Fox&quot;,&quot;Frog&quot;,&quot;Fungus&quot;,&quot;Gargoyle&quot;,&quot;Germ&quot;,&quot;Giant&quot;,&quot;Gnome&quot;,&quot;Goat&quot;,&quot;Goblin&quot;,&quot;God&quot;,&quot;Golem&quot;,&quot;Gorgon&quot;,&quot;Graveborn&quot;,&quot;Gremlin&quot;,&quot;Griffin&quot;,&quot;Hag&quot;,&quot;Harpy&quot;,&quot;Hellion&quot;,&quot;Hippo&quot;,&quot;Hippogriff&quot;,&quot;Homarid&quot;,&quot;Homunculus&quot;,&quot;Horror&quot;,&quot;Horse&quot;,&quot;Hound&quot;,&quot;Human&quot;,&quot;Hydra&quot;,&quot;Hyena&quot;,&quot;Illusion&quot;,&quot;Imp&quot;,&quot;Incarnation&quot;,&quot;Insect&quot;,&quot;Jackal&quot;,&quot;Jellyfish&quot;,&quot;Juggernaut&quot;,&quot;Kavu&quot;,&quot;Kirin&quot;,&quot;Kithkin&quot;,&quot;Knight&quot;,&quot;Kobold&quot;,&quot;Kor&quot;,&quot;Kraken&quot;,&quot;Lamia&quot;,&quot;Lammasu&quot;,&quot;Leech&quot;,&quot;Leviathan&quot;,&quot;Lhurgoyf&quot;,&quot;Licid&quot;,&quot;Lizard&quot;,&quot;Manticore&quot;,&quot;Masticore&quot;,&quot;Mercenary&quot;,&quot;Merfolk&quot;,&quot;Metathran&quot;,&quot;Minion&quot;,&quot;Minotaur&quot;,&quot;Mole&quot;,&quot;Monger&quot;,&quot;Mongoose&quot;,&quot;Monk&quot;,&quot;Monkey&quot;,&quot;Moonfolk&quot;,&quot;Mouse&quot;,&quot;Mutant&quot;,&quot;Myr&quot;,&quot;Mystic&quot;,&quot;Naga&quot;,&quot;Nautilus&quot;,&quot;Nephilim&quot;,&quot;Nightmare&quot;,&quot;Nightstalker&quot;,&quot;Ninja&quot;,&quot;Noble&quot;,&quot;Noggle&quot;,&quot;Nomad&quot;,&quot;Nymph&quot;,&quot;Octopus&quot;,&quot;Ogre&quot;,&quot;Ooze&quot;,&quot;Orb&quot;,&quot;Orc&quot;,&quot;Orgg&quot;,&quot;Otter&quot;,&quot;Ouphe&quot;,&quot;Ox&quot;,&quot;Oyster&quot;,&quot;Pangolin&quot;,&quot;Peasant&quot;,&quot;Pegasus&quot;,&quot;Pentavite&quot;,&quot;Pest&quot;,&quot;Phelddagrif&quot;,&quot;Phoenix&quot;,&quot;Pilot&quot;,&quot;Pincher&quot;,&quot;Pirate&quot;,&quot;Plant&quot;,&quot;Praetor&quot;,&quot;Prism&quot;,&quot;Processor&quot;,&quot;Rabbit&quot;,&quot;Rat&quot;,&quot;Rebel&quot;,&quot;Reflection&quot;,&quot;Rhino&quot;,&quot;Rigger&quot;,&quot;Rogue&quot;,&quot;Sable&quot;,&quot;Salamander&quot;,&quot;Samurai&quot;,&quot;Sand&quot;,&quot;Saproling&quot;,&quot;Satyr&quot;,&quot;Scarecrow&quot;,&quot;Scion&quot;,&quot;Scorpion&quot;,&quot;Scout&quot;,&quot;Sculpture&quot;,&quot;Serf&quot;,&quot;Serpent&quot;,&quot;Servo&quot;,&quot;Shade&quot;,&quot;Shaman&quot;,&quot;Shapeshifter&quot;,&quot;Shark&quot;,&quot;Sheep&quot;,&quot;Siren&quot;,&quot;Skeleton&quot;,&quot;Slith&quot;,&quot;Sliver&quot;,&quot;Slug&quot;,&quot;Snake&quot;,&quot;Soldier&quot;,&quot;Soltari&quot;,&quot;Spawn&quot;,&quot;Specter&quot;,&quot;Spellshaper&quot;,&quot;Sphinx&quot;,&quot;Spider&quot;,&quot;Spike&quot;,&quot;Spirit&quot;,&quot;Splinter&quot;,&quot;Sponge&quot;,&quot;Squid&quot;,&quot;Squirrel&quot;,&quot;Starfish&quot;,&quot;Surrakar&quot;,&quot;Survivor&quot;,&quot;Tentacle&quot;,&quot;Tetravite&quot;,&quot;Thalakos&quot;,&quot;Thopter&quot;,&quot;Thrull&quot;,&quot;Treefolk&quot;,&quot;Trilobite&quot;,&quot;Triskelavite&quot;,&quot;Troll&quot;,&quot;Turtle&quot;,&quot;Unicorn&quot;,&quot;Vampire&quot;,&quot;Vedalken&quot;,&quot;Viashino&quot;,&quot;Volver&quot;,&quot;Wall&quot;,&quot;Warlock&quot;,&quot;Warrior&quot;,&quot;Weird&quot;,&quot;Werewolf&quot;,&quot;Whale&quot;,&quot;Wizard&quot;,&quot;Wolf&quot;,&quot;Wolverine&quot;,&quot;Wombat&quot;,&quot;Worm&quot;,&quot;Wraith&quot;,&quot;Wurm&quot;,&quot;Yeti&quot;,&quot;Zombie&quot;,&quot;Zubera&quot; })" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
