@@ -18,13 +18,10 @@ import javax.swing.ImageIcon;
 public class ScryfallInteraction {
 
     public static ArrayList<Card> search(String query) {
-        ArrayList<Card> cardList;
         String prefix = getPrefix();
 
-//        cardList = MTGCardQuery.search(prefix +" "+ query);
         System.out.println(prefix + query);
-        cardList = MTGCardQuery.search(prefix + query);
-
+        ArrayList<Card> cardList = MTGCardQuery.search(prefix + query);
         return cardList;
     }
 
@@ -47,8 +44,8 @@ public class ScryfallInteraction {
 
         return prefix;
     }
-    
-        public static ImageIcon getImage(Card c, String imageType) {
+
+    public static ImageIcon getImage(Card c, String imageType) {
         ImageIcon icon = null;
         try {
             URL url = new URL(c.getImageURI(imageType));
