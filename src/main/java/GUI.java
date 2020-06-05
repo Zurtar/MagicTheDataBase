@@ -59,7 +59,8 @@ public class GUI extends javax.swing.JFrame {
         largeImageFrame = new javax.swing.JFrame();
         largeImageLabel = new javax.swing.JLabel();
         largeImageHeader = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPane = new javax.swing.JTabbedPane();
+        deckEditorPanel = new javax.swing.JPanel();
         searchPanel = new javax.swing.JPanel();
         resultScrollPane = new javax.swing.JScrollPane();
         resultTable = new javax.swing.JTable();
@@ -92,7 +93,6 @@ public class GUI extends javax.swing.JFrame {
         cardTypeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cardOracleDisplay = new javax.swing.JTextArea();
-        deckEditorPanel = new javax.swing.JPanel();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
         largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
@@ -117,6 +117,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout deckEditorPanelLayout = new javax.swing.GroupLayout(deckEditorPanel);
+        deckEditorPanel.setLayout(deckEditorPanelLayout);
+        deckEditorPanelLayout.setHorizontalGroup(
+            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1599, Short.MAX_VALUE)
+        );
+        deckEditorPanelLayout.setVerticalGroup(
+            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 960, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Deck editor", deckEditorPanel);
 
         resultTable.setBackground(new java.awt.Color(204, 204, 204));
         resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -182,7 +195,7 @@ public class GUI extends javax.swing.JFrame {
 
         cardNameLabel.setText("Card Name:");
 
-        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
 
@@ -228,13 +241,12 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(searchPanelLayout.createSequentialGroup()
-                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(searchButton))
-                            .addComponent(titleLabel))
-                        .addGap(26, 26, 26)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchButton))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(18, 18, 18)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(searchPanelLayout.createSequentialGroup()
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,8 +254,8 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(filterCMCRadio))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(colourComboBox, 0, 90, Short.MAX_VALUE)
-                                    .addComponent(cmcComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(colourComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(filterOracleRadio)
@@ -262,12 +274,6 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1349, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardImageHeaderLabel))
-                        .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(searchPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +295,13 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardImageHeaderLabel))
+                        .addContainerGap(38, Short.MAX_VALUE))))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,15 +309,10 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resultPageCountLabel)
-                        .addGap(77, 77, 77))
-                    .addGroup(searchPanelLayout.createSequentialGroup()
                         .addComponent(cardImageHeaderLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(1, 1, 1)
                         .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cardNameLabel)
                             .addComponent(cardNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -329,9 +336,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(10, 10, 10)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(filterCMCRadio)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -348,28 +355,23 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(filterCardRadio)
                             .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(filterNameRadio)
-                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(searchButton)))
+                                .addComponent(filterNameRadio)))
+                        .addGap(18, 18, 18)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resultPageCountLabel)
+                .addGap(77, 77, 77))
         );
 
-        jTabbedPane1.addTab("Search Window", searchPanel);
-
-        javax.swing.GroupLayout deckEditorPanelLayout = new javax.swing.GroupLayout(deckEditorPanel);
-        deckEditorPanel.setLayout(deckEditorPanelLayout);
-        deckEditorPanelLayout.setHorizontalGroup(
-            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1599, Short.MAX_VALUE)
-        );
-        deckEditorPanelLayout.setVerticalGroup(
-            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Deck editor", deckEditorPanel);
+        tabbedPane.addTab("Search Window", searchPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -379,7 +381,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -388,7 +390,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -521,24 +523,23 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField cardNameDisplay;
     private javax.swing.JLabel cardNameLabel;
     private javax.swing.JTextArea cardOracleDisplay;
-    private javax.swing.JComboBox<String> cardTypeComboBox;
+    public static javax.swing.JComboBox<String> cardTypeComboBox;
     private javax.swing.JTextField cardTypeDisplay;
     private javax.swing.JLabel cardTypeLabel;
-    private javax.swing.JComboBox<String> cmcComboBox;
-    private javax.swing.JComboBox<String> colourComboBox;
+    public static javax.swing.JComboBox<String> cmcComboBox;
+    public static javax.swing.JComboBox<String> colourComboBox;
     private javax.swing.JTextField colourDisplay;
     private javax.swing.JLabel colourLabel;
-    private javax.swing.JComboBox<String> creatureTypeComboBox;
-    private javax.swing.JPanel deckEditorPanel;
-    private javax.swing.JRadioButton filterCMCRadio;
-    private javax.swing.JRadioButton filterCardRadio;
-    private javax.swing.JRadioButton filterColourRadio;
-    private javax.swing.JRadioButton filterCreatureTypeRadio;
-    private javax.swing.JRadioButton filterNameRadio;
-    private javax.swing.JRadioButton filterOracleRadio;
+    public static javax.swing.JComboBox<String> creatureTypeComboBox;
+    public static javax.swing.JPanel deckEditorPanel;
+    public static javax.swing.JRadioButton filterCMCRadio;
+    public static javax.swing.JRadioButton filterCardRadio;
+    public static javax.swing.JRadioButton filterColourRadio;
+    public static javax.swing.JRadioButton filterCreatureTypeRadio;
+    public static javax.swing.JRadioButton filterNameRadio;
+    public static javax.swing.JRadioButton filterOracleRadio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
@@ -546,12 +547,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel manaCostLabel;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
-    private javax.swing.JTable resultTable;
+    public static javax.swing.JTable resultTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JPanel searchPanel;
+    public static javax.swing.JPanel searchPanel;
     private javax.swing.JTextField setDisplay;
     private javax.swing.JLabel setLabel;
+    public static javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
