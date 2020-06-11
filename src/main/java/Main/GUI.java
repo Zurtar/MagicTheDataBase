@@ -61,10 +61,10 @@ public class GUI extends javax.swing.JFrame {
         largeImageLabel = new javax.swing.JLabel();
         largeImageHeader = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        searchPanel2 = new javax.swing.JPanel();
-        resultScrollPane2 = new javax.swing.JScrollPane();
-        resultTable2 = new javax.swing.JTable();
-        searchButton2 = new javax.swing.JButton();
+        searchPanel = new javax.swing.JPanel();
+        resultScrollPane = new javax.swing.JScrollPane();
+        resultTable = new javax.swing.JTable();
+        searchButton = new javax.swing.JButton();
         cmcComboBox = new javax.swing.JComboBox<>();
         cardTypeComboBox = new javax.swing.JComboBox<>();
         titleLabel = new javax.swing.JLabel();
@@ -79,8 +79,8 @@ public class GUI extends javax.swing.JFrame {
         filterOracleBox = new javax.swing.JCheckBox();
         filterNameBox = new javax.swing.JCheckBox();
         oracleText = new javax.swing.JTextField();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        cardInfoTabbedPane = new javax.swing.JTabbedPane();
+        cardDescriptionPanel = new javax.swing.JPanel();
         cardNameLabel = new javax.swing.JLabel();
         cardNameDisplay = new javax.swing.JTextField();
         setLabel = new javax.swing.JLabel();
@@ -89,13 +89,13 @@ public class GUI extends javax.swing.JFrame {
         manaCostDisplay = new javax.swing.JTextField();
         cardTypeLabel = new javax.swing.JLabel();
         cardTypeDisplay = new javax.swing.JTextField();
-        colourLabel2 = new javax.swing.JLabel();
+        colourLabel = new javax.swing.JLabel();
         colourDisplay = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        oracelTextLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cardOracleDisplay = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        cardImageLabel1 = new javax.swing.JLabel();
+        cardImagePanel = new javax.swing.JPanel();
+        cardImageLabel = new javax.swing.JLabel();
         cardImageHeaderLabel1 = new javax.swing.JLabel();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
@@ -121,16 +121,15 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 860));
 
-        searchPanel2.setMaximumSize(new java.awt.Dimension(1280, 870));
-        searchPanel2.setMinimumSize(new java.awt.Dimension(1280, 870));
-        searchPanel2.setPreferredSize(new java.awt.Dimension(1266, 870));
-        searchPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        searchPanel.setMaximumSize(new java.awt.Dimension(1280, 870));
+        searchPanel.setMinimumSize(new java.awt.Dimension(1280, 870));
+        searchPanel.setPreferredSize(new java.awt.Dimension(1266, 870));
+        searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        resultTable2.setBackground(new java.awt.Color(204, 204, 204));
-        resultTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        resultTable2.setModel(new javax.swing.table.DefaultTableModel(
+        resultTable.setBackground(new java.awt.Color(204, 204, 204));
+        resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -146,54 +145,54 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        resultTable2.setRowHeight(24);
-        resultScrollPane2.setViewportView(resultTable2);
+        resultTable.setRowHeight(24);
+        resultScrollPane.setViewportView(resultTable);
 
-        searchPanel2.add(resultScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
+        searchPanel.add(resultScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
 
-        searchButton2.setText("Search");
-        searchPanel2.add(searchButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
+        searchButton.setText("Search");
+        searchPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
 
         cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
-        searchPanel2.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
+        searchPanel.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
-        searchPanel2.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
+        searchPanel.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
-        searchPanel2.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        searchPanel.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         creatureTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Advisor","Aetherborn","Ally","Angel","Antelope","Ape","Archer","Archon","Army","Artificer","Assassin","Assembly-Worker","Atog","Aurochs","Avatar","Azra","Badger","Barbarian","Basilisk","Bat","Bear","Beast","Beeble","Berserker","Bird","Blinkmoth","Boar","Bringer","Brushwagg","Camarid","Camel","Caribou","Carrier","Cat","Centaur","Cephalid","Chimera","Citizen","Cleric","Cockatrice","Construct","Coward","Crab","Crocodile","Cyclops","Dauthi","Demigod","Demon","Deserter","Devil","Dinosaur","Djinn","Dragon","Drake","Dreadnought","Drone","Druid","Dryad","Dwarf","Efreet","Egg","Elder","Eldrazi","Elemental","Elephant","Elf","Elk","Eye","Faerie","Ferret","Fish","Flagbearer","Fox","Frog","Fungus","Gargoyle","Germ","Giant","Gnome","Goat","Goblin","God","Golem","Gorgon","Graveborn","Gremlin","Griffin","Hag","Harpy","Hellion","Hippo","Hippogriff","Homarid","Homunculus","Horror","Horse","Hound","Human","Hydra","Hyena","Illusion","Imp","Incarnation","Insect","Jackal","Jellyfish","Juggernaut","Kavu","Kirin","Kithkin","Knight","Kobold","Kor","Kraken","Lamia","Lammasu","Leech","Leviathan","Lhurgoyf","Licid","Lizard","Manticore","Masticore","Mercenary","Merfolk","Metathran","Minion","Minotaur","Mole","Monger","Mongoose","Monk","Monkey","Moonfolk","Mouse","Mutant","Myr","Mystic","Naga","Nautilus","Nephilim","Nightmare","Nightstalker","Ninja","Noble","Noggle","Nomad","Nymph","Octopus","Ogre","Ooze","Orb","Orc","Orgg","Otter","Ouphe","Ox","Oyster","Pangolin","Peasant","Pegasus","Pentavite","Pest","Phelddagrif","Phoenix","Pilot","Pincher","Pirate","Plant","Praetor","Prism","Processor","Rabbit","Rat","Rebel","Reflection","Rhino","Rigger","Rogue","Sable","Salamander","Samurai","Sand","Saproling","Satyr","Scarecrow","Scion","Scorpion","Scout","Sculpture","Serf","Serpent","Servo","Shade","Shaman","Shapeshifter","Shark","Sheep","Siren","Skeleton","Slith","Sliver","Slug","Snake","Soldier","Soltari","Spawn","Specter","Spellshaper","Sphinx","Spider","Spike","Spirit","Splinter","Sponge","Squid","Squirrel","Starfish","Surrakar","Survivor","Tentacle","Tetravite","Thalakos","Thopter","Thrull","Treefolk","Trilobite","Triskelavite","Troll","Turtle","Unicorn","Vampire","Vedalken","Viashino","Volver","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wurm","Yeti","Zombie","Zubera" }));
-        searchPanel2.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
+        searchPanel.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
-        searchPanel2.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
-        searchPanel2.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
-        searchPanel2.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
+        searchPanel.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
+        searchPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
+        searchPanel.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
 
         filterCMCBox.setText("Filter By CMC");
-        searchPanel2.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
+        searchPanel.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
         filterColourBox.setText("Filter By Colour");
-        searchPanel2.add(filterColourBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
+        searchPanel.add(filterColourBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
 
         filterCardBox.setText("Filter By Cardtype");
-        searchPanel2.add(filterCardBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+        searchPanel.add(filterCardBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
         filterCreatureTypeBox.setText("Filter By Creature type");
-        searchPanel2.add(filterCreatureTypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+        searchPanel.add(filterCreatureTypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         filterOracleBox.setText("Filter By Oracle Text");
-        searchPanel2.add(filterOracleBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        searchPanel.add(filterOracleBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         filterNameBox.setText("Filter By Name");
-        searchPanel2.add(filterNameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
+        searchPanel.add(filterNameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
 
         oracleText.setMinimumSize(new java.awt.Dimension(28, 20));
         oracleText.setPreferredSize(new java.awt.Dimension(28, 20));
-        searchPanel2.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 110, 23));
+        searchPanel.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 110, 23));
 
         cardNameLabel.setText("Card Name:");
 
@@ -211,11 +210,11 @@ public class GUI extends javax.swing.JFrame {
 
         cardTypeDisplay.setEditable(false);
 
-        colourLabel2.setText("Colour(s):");
+        colourLabel.setText("Colour(s):");
 
         colourDisplay.setEditable(false);
 
-        jLabel1.setText("Oracle Text:");
+        oracelTextLabel.setText("Oracle Text:");
 
         cardOracleDisplay.setEditable(false);
         cardOracleDisplay.setColumns(20);
@@ -223,100 +222,100 @@ public class GUI extends javax.swing.JFrame {
         cardOracleDisplay.setRows(5);
         jScrollPane1.setViewportView(cardOracleDisplay);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout cardDescriptionPanelLayout = new javax.swing.GroupLayout(cardDescriptionPanel);
+        cardDescriptionPanel.setLayout(cardDescriptionPanelLayout);
+        cardDescriptionPanelLayout.setHorizontalGroup(
+            cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                         .addComponent(manaCostLabel)
                         .addGap(12, 12, 12)
                         .addComponent(manaCostDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(oracelTextLabel)
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                         .addComponent(cardTypeLabel)
                         .addGap(18, 18, 18)
                         .addComponent(cardTypeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
+                        .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cardNameLabel)
                             .addComponent(setLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(setDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cardNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(colourLabel2)
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
+                        .addComponent(colourLabel)
                         .addGap(18, 18, 18)
                         .addComponent(colourDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        cardDescriptionPanelLayout.setVerticalGroup(
+            cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cardNameLabel)
                     .addComponent(cardNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setLabel)
                     .addComponent(setDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(manaCostLabel)
                     .addComponent(manaCostDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cardTypeLabel)
                     .addComponent(cardTypeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(colourLabel2)
+                .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(colourLabel)
                     .addComponent(colourDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(oracelTextLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("tab1", jPanel2);
+        cardInfoTabbedPane.addTab("Card Description'", cardDescriptionPanel);
 
-        cardImageLabel1.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
-        cardImageLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cardImageLabel1.setPreferredSize(new java.awt.Dimension(146, 204));
+        cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
 
         cardImageHeaderLabel1.setText("Click Image For Large Version");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout cardImagePanelLayout = new javax.swing.GroupLayout(cardImagePanel);
+        cardImagePanel.setLayout(cardImagePanelLayout);
+        cardImagePanelLayout.setHorizontalGroup(
+            cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardImagePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardImageLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cardImageHeaderLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        cardImagePanelLayout.setVerticalGroup(
+            cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardImagePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cardImageLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cardImageHeaderLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("tab2", jPanel1);
+        cardInfoTabbedPane.addTab("Card Image", cardImagePanel);
 
-        searchPanel2.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 390));
-        jTabbedPane3.getAccessibleContext().setAccessibleName("Card Info");
+        searchPanel.add(cardInfoTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 390));
+        cardInfoTabbedPane.getAccessibleContext().setAccessibleName("Card Info");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,7 +325,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(90, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -335,7 +334,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -425,18 +424,21 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cardImageHeaderLabel1;
-    private javax.swing.JLabel cardImageLabel1;
-    private javax.swing.JTextField cardNameDisplay;
-    private javax.swing.JLabel cardNameLabel;
+    public static javax.swing.JPanel cardDescriptionPanel;
+    public static javax.swing.JLabel cardImageHeaderLabel1;
+    public static javax.swing.JLabel cardImageLabel;
+    public static javax.swing.JPanel cardImagePanel;
+    public static javax.swing.JTabbedPane cardInfoTabbedPane;
+    public static javax.swing.JTextField cardNameDisplay;
+    public static javax.swing.JLabel cardNameLabel;
     private javax.swing.JTextArea cardOracleDisplay;
     public static javax.swing.JComboBox<String> cardTypeComboBox;
-    private javax.swing.JTextField cardTypeDisplay;
-    private javax.swing.JLabel cardTypeLabel;
+    public static javax.swing.JTextField cardTypeDisplay;
+    public static javax.swing.JLabel cardTypeLabel;
     public static javax.swing.JComboBox<String> cmcComboBox;
     public static javax.swing.JComboBox<String> colourComboBox;
-    private javax.swing.JTextField colourDisplay;
-    private javax.swing.JLabel colourLabel2;
+    public static javax.swing.JTextField colourDisplay;
+    public static javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
@@ -444,26 +446,23 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox filterCreatureTypeBox;
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
-    private javax.swing.JTextField manaCostDisplay;
-    private javax.swing.JLabel manaCostLabel;
+    public static javax.swing.JTextField manaCostDisplay;
+    public static javax.swing.JLabel manaCostLabel;
+    public static javax.swing.JLabel oracelTextLabel;
     public static javax.swing.JTextField oracleText;
     private javax.swing.JLabel resultPageCountLabel;
-    private javax.swing.JScrollPane resultScrollPane2;
-    public static javax.swing.JTable resultTable2;
-    private javax.swing.JButton searchButton2;
+    private javax.swing.JScrollPane resultScrollPane;
+    public static javax.swing.JTable resultTable;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    public static javax.swing.JPanel searchPanel2;
-    private javax.swing.JTextField setDisplay;
-    private javax.swing.JLabel setLabel;
+    public static javax.swing.JPanel searchPanel;
+    public static javax.swing.JTextField setDisplay;
+    public static javax.swing.JLabel setLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
