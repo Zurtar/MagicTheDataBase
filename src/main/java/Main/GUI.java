@@ -119,11 +119,19 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 860));
+        setMaximumSize(new java.awt.Dimension(99999, 999999));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 700));
 
-        searchPanel.setMaximumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setMinimumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setPreferredSize(new java.awt.Dimension(1266, 870));
+        tabbedPane.setMaximumSize(new java.awt.Dimension(999999, 999999));
+        tabbedPane.setMinimumSize(new java.awt.Dimension(0, 0));
+        tabbedPane.setPreferredSize(new java.awt.Dimension(1200, 680));
+
+        searchPanel.setMaximumSize(new java.awt.Dimension(1200, 680));
+        searchPanel.setMinimumSize(new java.awt.Dimension(1200, 680));
+        searchPanel.setPreferredSize(new java.awt.Dimension(1200, 680));
+        searchPanel.setRequestFocusEnabled(false);
         searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resultTable.setBackground(new java.awt.Color(204, 204, 204));
@@ -191,7 +199,7 @@ public class GUI extends javax.swing.JFrame {
         searchPanel.add(cardImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
 
         cardImageHeaderLabel.setText("Click Image For Large Version");
-        searchPanel.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 146, -1));
+        searchPanel.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 180, -1));
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
         searchPanel.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
@@ -222,7 +230,7 @@ public class GUI extends javax.swing.JFrame {
                 setDisplayActionPerformed(evt);
             }
         });
-        searchPanel.add(setDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 271, 120, -1));
+        searchPanel.add(setDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 270, 120, -1));
         searchPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
 
         colourDisplay.setEditable(false);
@@ -264,15 +272,19 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane.addTab("Search Window", searchPanel);
 
+        deckEditorPanel.setMaximumSize(new java.awt.Dimension(1170, 650));
+        deckEditorPanel.setMinimumSize(new java.awt.Dimension(1200, 680));
+        deckEditorPanel.setPreferredSize(new java.awt.Dimension(1200, 680));
+
         javax.swing.GroupLayout deckEditorPanelLayout = new javax.swing.GroupLayout(deckEditorPanel);
         deckEditorPanel.setLayout(deckEditorPanelLayout);
         deckEditorPanelLayout.setHorizontalGroup(
             deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1163, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         deckEditorPanelLayout.setVerticalGroup(
             deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Deck editor", deckEditorPanel);
@@ -281,11 +293,13 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
