@@ -60,32 +60,18 @@ public class GUI extends javax.swing.JFrame {
         largeImageFrame = new javax.swing.JFrame();
         largeImageLabel = new javax.swing.JLabel();
         largeImageHeader = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         searchPanel2 = new javax.swing.JPanel();
         resultScrollPane2 = new javax.swing.JScrollPane();
         resultTable2 = new javax.swing.JTable();
-        colourLabel2 = new javax.swing.JLabel();
         searchButton2 = new javax.swing.JButton();
-        cardTypeDisplay = new javax.swing.JTextField();
         cmcComboBox = new javax.swing.JComboBox<>();
-        setLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        manaCostLabel = new javax.swing.JLabel();
-        cardImageLabel = new javax.swing.JLabel();
-        cardImageHeaderLabel = new javax.swing.JLabel();
         cardTypeComboBox = new javax.swing.JComboBox<>();
-        cardNameLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
         creatureTypeComboBox = new javax.swing.JComboBox<>();
         colourComboBox = new javax.swing.JComboBox<>();
-        cardNameDisplay = new javax.swing.JTextField();
-        manaCostDisplay = new javax.swing.JTextField();
-        setDisplay = new javax.swing.JTextField();
         searchField = new javax.swing.JTextField();
-        colourDisplay = new javax.swing.JTextField();
         resultPageCountLabel = new javax.swing.JLabel();
-        cardTypeLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cardOracleDisplay = new javax.swing.JTextArea();
         filterCMCBox = new javax.swing.JCheckBox();
         filterColourBox = new javax.swing.JCheckBox();
         filterCardBox = new javax.swing.JCheckBox();
@@ -93,7 +79,23 @@ public class GUI extends javax.swing.JFrame {
         filterOracleBox = new javax.swing.JCheckBox();
         filterNameBox = new javax.swing.JCheckBox();
         oracleText = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        cardImageHeaderLabel = new javax.swing.JLabel();
+        cardImageLabel = new javax.swing.JLabel();
+        cardNameLabel = new javax.swing.JLabel();
+        cardNameDisplay = new javax.swing.JTextField();
+        setLabel = new javax.swing.JLabel();
+        setDisplay = new javax.swing.JTextField();
+        manaCostLabel = new javax.swing.JLabel();
+        manaCostDisplay = new javax.swing.JTextField();
+        cardTypeLabel = new javax.swing.JLabel();
+        cardTypeDisplay = new javax.swing.JTextField();
+        colourLabel2 = new javax.swing.JLabel();
+        colourDisplay = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cardOracleDisplay = new javax.swing.JTextArea();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
         largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
@@ -148,40 +150,14 @@ public class GUI extends javax.swing.JFrame {
 
         searchPanel2.add(resultScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
 
-        colourLabel2.setText("Colour(s):");
-        searchPanel2.add(colourLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 355, -1, -1));
-
         searchButton2.setText("Search");
         searchPanel2.add(searchButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
-
-        cardTypeDisplay.setEditable(false);
-        searchPanel2.add(cardTypeDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 326, 120, -1));
 
         cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
         searchPanel2.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
 
-        setLabel.setText("Set(s):");
-        searchPanel2.add(setLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 274, -1, -1));
-
-        jLabel1.setText("Oracle Text:");
-        searchPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 384, -1, -1));
-
-        manaCostLabel.setText("Mana Cost:");
-        searchPanel2.add(manaCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 303, -1, -1));
-
-        cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
-        cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
-        searchPanel2.add(cardImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
-
-        cardImageHeaderLabel.setText("Click Image For Large Version");
-        searchPanel2.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 190, 30));
-
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
         searchPanel2.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
-
-        cardNameLabel.setText("Card Name:");
-        searchPanel2.add(cardNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 248, -1, -1));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
@@ -193,31 +169,8 @@ public class GUI extends javax.swing.JFrame {
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
         searchPanel2.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
-
-        cardNameDisplay.setEditable(false);
-        searchPanel2.add(cardNameDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 245, 120, -1));
-
-        manaCostDisplay.setEditable(false);
-        searchPanel2.add(manaCostDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1018, 300, 120, -1));
-
-        setDisplay.setEditable(false);
-        searchPanel2.add(setDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 271, 120, -1));
         searchPanel2.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
-
-        colourDisplay.setEditable(false);
-        searchPanel2.add(colourDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 352, 120, -1));
         searchPanel2.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
-
-        cardTypeLabel.setText("Card Type:");
-        searchPanel2.add(cardTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 329, -1, -1));
-
-        cardOracleDisplay.setEditable(false);
-        cardOracleDisplay.setColumns(20);
-        cardOracleDisplay.setLineWrap(true);
-        cardOracleDisplay.setRows(5);
-        jScrollPane1.setViewportView(cardOracleDisplay);
-
-        searchPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 404, 210, 200));
 
         filterCMCBox.setText("Filter By CMC");
         searchPanel2.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
@@ -240,13 +193,120 @@ public class GUI extends javax.swing.JFrame {
         oracleText.setMinimumSize(new java.awt.Dimension(28, 20));
         oracleText.setPreferredSize(new java.awt.Dimension(28, 20));
         searchPanel2.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 110, 23));
-        searchPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 320, 610));
+
+        cardImageHeaderLabel.setText("Click Image For Large Version");
+
+        cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
+
+        cardNameLabel.setText("Card Name:");
+
+        cardNameDisplay.setEditable(false);
+
+        setLabel.setText("Set(s):");
+
+        setDisplay.setEditable(false);
+
+        manaCostLabel.setText("Mana Cost:");
+
+        manaCostDisplay.setEditable(false);
+
+        cardTypeLabel.setText("Card Type:");
+
+        cardTypeDisplay.setEditable(false);
+
+        colourLabel2.setText("Colour(s):");
+
+        colourDisplay.setEditable(false);
+
+        jLabel1.setText("Oracle Text:");
+
+        cardOracleDisplay.setEditable(false);
+        cardOracleDisplay.setColumns(20);
+        cardOracleDisplay.setLineWrap(true);
+        cardOracleDisplay.setRows(5);
+        jScrollPane1.setViewportView(cardOracleDisplay);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(cardImageHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cardNameLabel)
+                                .addComponent(setLabel))
+                            .addGap(8, 8, 8)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(setDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                .addComponent(cardNameDisplay)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(colourLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(colourDisplay))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cardTypeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cardTypeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(manaCostLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(manaCostDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(cardImageHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardNameLabel)
+                    .addComponent(cardNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(setLabel)
+                    .addComponent(setDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(manaCostDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manaCostLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardTypeLabel)
+                    .addComponent(cardTypeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(colourLabel2)
+                    .addComponent(colourDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("tab1", jPanel2);
+
+        searchPanel2.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1266, Short.MAX_VALUE)
+            .addGap(0, 1280, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -371,8 +431,10 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
