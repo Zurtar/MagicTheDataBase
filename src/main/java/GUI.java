@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -397,10 +398,11 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < cardList.size(); i++) {
             Card currentCard = cardList.get(i);
             resultTable.setValueAt(currentCard.getName(), i, 0);
-            resultTable.setValueAt(currentCard.getSetCode(), i, 0);
-            resultTable.setValueAt(currentCard.getManaCost(), i, 0);
-            resultTable.setValueAt(currentCard.getTypeLine(), i, 0);
-            resultTable.setValueAt(currentCard.getColors(), i, 0);
+            resultTable.setValueAt(currentCard.getSetCode(), i, 1);
+            resultTable.setValueAt(currentCard.getManaCost(), i, 2);
+            resultTable.setValueAt(currentCard.getTypeLine(), i, 3);
+            resultTable.setValueAt(currentCard.getColors(), i, 4);
+            
         }
     }
 
