@@ -70,21 +70,15 @@ public class GUI extends javax.swing.JFrame {
         cardTypeDisplay = new javax.swing.JTextField();
         cmcComboBox = new javax.swing.JComboBox<>();
         setLabel = new javax.swing.JLabel();
-        filterCardRadio = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         manaCostLabel = new javax.swing.JLabel();
-        filterCMCRadio = new javax.swing.JRadioButton();
         cardImageLabel = new javax.swing.JLabel();
         cardImageHeaderLabel = new javax.swing.JLabel();
         cardTypeComboBox = new javax.swing.JComboBox<>();
         cardNameLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
-        filterOracleRadio = new javax.swing.JRadioButton();
         creatureTypeComboBox = new javax.swing.JComboBox<>();
         colourComboBox = new javax.swing.JComboBox<>();
-        filterColourRadio = new javax.swing.JRadioButton();
-        filterCreatureTypeRadio = new javax.swing.JRadioButton();
-        filterNameRadio = new javax.swing.JRadioButton();
         cardNameDisplay = new javax.swing.JTextField();
         manaCostDisplay = new javax.swing.JTextField();
         setDisplay = new javax.swing.JTextField();
@@ -94,6 +88,13 @@ public class GUI extends javax.swing.JFrame {
         cardTypeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cardOracleDisplay = new javax.swing.JTextArea();
+        filterCMCBox = new javax.swing.JCheckBox();
+        filterColourBox = new javax.swing.JCheckBox();
+        filterCardBox = new javax.swing.JCheckBox();
+        filterCreatureTypeBox = new javax.swing.JCheckBox();
+        filterOracleBox = new javax.swing.JCheckBox();
+        filterNameBox = new javax.swing.JCheckBox();
+        oracleText = new javax.swing.JTextField();
         deckEditorPanel = new javax.swing.JPanel();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
@@ -161,13 +162,9 @@ public class GUI extends javax.swing.JFrame {
 
         setLabel.setText("Set(s):");
 
-        filterCardRadio.setText("Filter By Cardtype");
-
         jLabel1.setText("Oracle Text:");
 
         manaCostLabel.setText("Mana Cost:");
-
-        filterCMCRadio.setText("Filter By CMC");
 
         cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -188,18 +185,9 @@ public class GUI extends javax.swing.JFrame {
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
 
-        filterOracleRadio.setText("Search By Oracle Text");
-
         creatureTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Advisor","Aetherborn","Ally","Angel","Antelope","Ape","Archer","Archon","Army","Artificer","Assassin","Assembly-Worker","Atog","Aurochs","Avatar","Azra","Badger","Barbarian","Basilisk","Bat","Bear","Beast","Beeble","Berserker","Bird","Blinkmoth","Boar","Bringer","Brushwagg","Camarid","Camel","Caribou","Carrier","Cat","Centaur","Cephalid","Chimera","Citizen","Cleric","Cockatrice","Construct","Coward","Crab","Crocodile","Cyclops","Dauthi","Demigod","Demon","Deserter","Devil","Dinosaur","Djinn","Dragon","Drake","Dreadnought","Drone","Druid","Dryad","Dwarf","Efreet","Egg","Elder","Eldrazi","Elemental","Elephant","Elf","Elk","Eye","Faerie","Ferret","Fish","Flagbearer","Fox","Frog","Fungus","Gargoyle","Germ","Giant","Gnome","Goat","Goblin","God","Golem","Gorgon","Graveborn","Gremlin","Griffin","Hag","Harpy","Hellion","Hippo","Hippogriff","Homarid","Homunculus","Horror","Horse","Hound","Human","Hydra","Hyena","Illusion","Imp","Incarnation","Insect","Jackal","Jellyfish","Juggernaut","Kavu","Kirin","Kithkin","Knight","Kobold","Kor","Kraken","Lamia","Lammasu","Leech","Leviathan","Lhurgoyf","Licid","Lizard","Manticore","Masticore","Mercenary","Merfolk","Metathran","Minion","Minotaur","Mole","Monger","Mongoose","Monk","Monkey","Moonfolk","Mouse","Mutant","Myr","Mystic","Naga","Nautilus","Nephilim","Nightmare","Nightstalker","Ninja","Noble","Noggle","Nomad","Nymph","Octopus","Ogre","Ooze","Orb","Orc","Orgg","Otter","Ouphe","Ox","Oyster","Pangolin","Peasant","Pegasus","Pentavite","Pest","Phelddagrif","Phoenix","Pilot","Pincher","Pirate","Plant","Praetor","Prism","Processor","Rabbit","Rat","Rebel","Reflection","Rhino","Rigger","Rogue","Sable","Salamander","Samurai","Sand","Saproling","Satyr","Scarecrow","Scion","Scorpion","Scout","Sculpture","Serf","Serpent","Servo","Shade","Shaman","Shapeshifter","Shark","Sheep","Siren","Skeleton","Slith","Sliver","Slug","Snake","Soldier","Soltari","Spawn","Specter","Spellshaper","Sphinx","Spider","Spike","Spirit","Splinter","Sponge","Squid","Squirrel","Starfish","Surrakar","Survivor","Tentacle","Tetravite","Thalakos","Thopter","Thrull","Treefolk","Trilobite","Triskelavite","Troll","Turtle","Unicorn","Vampire","Vedalken","Viashino","Volver","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wurm","Yeti","Zombie","Zubera" }));
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
-
-        filterColourRadio.setText("Filter By Colour");
-
-        filterCreatureTypeRadio.setText("Search By Creature type");
-
-        filterNameRadio.setSelected(true);
-        filterNameRadio.setText("Search By Name (Default)");
 
         cardNameDisplay.setEditable(false);
 
@@ -221,6 +209,21 @@ public class GUI extends javax.swing.JFrame {
         cardOracleDisplay.setLineWrap(true);
         cardOracleDisplay.setRows(5);
         jScrollPane1.setViewportView(cardOracleDisplay);
+
+        filterCMCBox.setText("Filter By CMC");
+
+        filterColourBox.setText("Filter By Colour");
+
+        filterCardBox.setText("Filter By Cardtype");
+
+        filterCreatureTypeBox.setText("Filter By Creature type");
+
+        filterOracleBox.setText("Filter By Oracle Text");
+
+        filterNameBox.setText("Filter By Name");
+
+        oracleText.setMinimumSize(new java.awt.Dimension(28, 20));
+        oracleText.setPreferredSize(new java.awt.Dimension(28, 20));
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -244,25 +247,31 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(searchPanelLayout.createSequentialGroup()
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterColourRadio)
-                                    .addComponent(filterCMCRadio))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(searchPanelLayout.createSequentialGroup()
+                                        .addComponent(filterCMCBox)
+                                        .addGap(12, 12, 12))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                                        .addComponent(filterColourBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(colourComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterOracleRadio)
+                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(searchPanelLayout.createSequentialGroup()
-                                        .addComponent(filterCreatureTypeRadio)
+                                        .addComponent(filterCreatureTypeBox)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(searchPanelLayout.createSequentialGroup()
+                                        .addComponent(filterOracleBox)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(searchPanelLayout.createSequentialGroup()
-                                .addComponent(filterCardRadio)
+                                .addComponent(filterCardBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(filterNameRadio)))))
+                                .addComponent(filterNameBox)))))
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,23 +316,24 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filterCMCBox)
+                                    .addComponent(filterCreatureTypeBox))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterCMCRadio)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(filterCreatureTypeRadio)
-                                        .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(filterColourBox))
+                                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(filterOracleBox)
+                                        .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(filterColourRadio)
-                                    .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(filterOracleRadio))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterCardRadio)
-                                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(filterNameRadio)))
+                                    .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filterCardBox)
+                                    .addComponent(filterNameBox))
                                 .addGap(18, 18, 18)))
                         .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(searchPanelLayout.createSequentialGroup()
@@ -539,12 +549,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
     public static javax.swing.JPanel deckEditorPanel;
-    public static javax.swing.JRadioButton filterCMCRadio;
-    public static javax.swing.JRadioButton filterCardRadio;
-    public static javax.swing.JRadioButton filterColourRadio;
-    public static javax.swing.JRadioButton filterCreatureTypeRadio;
-    public static javax.swing.JRadioButton filterNameRadio;
-    public static javax.swing.JRadioButton filterOracleRadio;
+    public static javax.swing.JCheckBox filterCMCBox;
+    public static javax.swing.JCheckBox filterCardBox;
+    public static javax.swing.JCheckBox filterColourBox;
+    public static javax.swing.JCheckBox filterCreatureTypeBox;
+    public static javax.swing.JCheckBox filterNameBox;
+    public static javax.swing.JCheckBox filterOracleBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFrame largeImageFrame;
@@ -552,6 +562,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel largeImageLabel;
     private javax.swing.JTextField manaCostDisplay;
     private javax.swing.JLabel manaCostLabel;
+    private javax.swing.JTextField oracleText;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
     public static javax.swing.JTable resultTable;

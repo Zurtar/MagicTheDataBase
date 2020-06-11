@@ -29,17 +29,17 @@ public class ScryfallInteraction {
     private static String getPrefix() {
         String prefix = "";
 
-        if (GUI.filterCMCRadio.isSelected()) {
+        if (GUI.filterCMCBox.isSelected()) {
             prefix = "cmc=" + GUI.cmcComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterCardRadio.isSelected()) {
+        } else if (GUI.filterCardBox.isSelected()) {
             prefix = "t:" + GUI.cardTypeComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterColourRadio.isSelected()) {
+        } else if (GUI.filterColourBox.isSelected()) {
             prefix = "c:" + GUI.colourComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterCreatureTypeRadio.isSelected()) {
+        } else if (GUI.filterCreatureTypeBox.isSelected()) {
             prefix = "t:" + GUI.creatureTypeComboBox.getSelectedItem() + " ";
-        } else if (GUI.filterOracleRadio.isSelected()) {
+        } else if (GUI.filterOracleBox.isSelected()) {
             prefix = "o:";
-        } else if (GUI.filterNameRadio.isSelected()) {
+        } else if (GUI.filterNameBox.isSelected()) {
             prefix = "";
         }
 
