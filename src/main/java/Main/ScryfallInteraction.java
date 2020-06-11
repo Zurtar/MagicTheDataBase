@@ -21,7 +21,7 @@ public class ScryfallInteraction {
     public static ArrayList<Card> search(String query) {
         String prefix = getPrefix();
 
-        System.out.println(prefix + query);
+        System.out.println(prefix + " " + query);
         ArrayList<Card> cardList = MTGCardQuery.search(prefix + query);
         return cardList;
     }
@@ -30,16 +30,24 @@ public class ScryfallInteraction {
         String prefix = "";
 
         if (GUI.filterCMCBox.isSelected()) {
-            prefix = "cmc=" + GUI.cmcComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterCardBox.isSelected()) {
-            prefix = "t:" + GUI.cardTypeComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterColourBox.isSelected()) {
-            prefix = "c:" + GUI.colourComboBox.getSelectedItem().toString() + " ";
-        } else if (GUI.filterCreatureTypeBox.isSelected()) {
-            prefix = "t:" + GUI.creatureTypeComboBox.getSelectedItem() + " ";
-        } else if (GUI.filterOracleBox.isSelected()) {
-            prefix = "o:";
-        } else if (GUI.filterNameBox.isSelected()) {
+            prefix += "cmc=" + GUI.cmcComboBox.getSelectedItem().toString() + " ";
+        }
+        if (GUI.filterCardBox.isSelected()) {
+            prefix += "t:" + GUI.cardTypeComboBox.getSelectedItem().toString() + " ";
+        }
+        if (GUI.filterColourBox.isSelected()) {
+            prefix += "c:" + GUI.colourComboBox.getSelectedItem().toString() + " ";
+        }
+        if (GUI.filterCreatureTypeBox.isSelected()) {
+            prefix += "t:" + GUI.creatureTypeComboBox.getSelectedItem() + " ";
+        } 
+        
+        if (GUI.filterOracleBox.isSelected()) {
+            prefix += "o:\" " + GUI.oracleText.getText() + "\"";
+        } 
+        
+        //wrong!
+        if (GUI.filterNameBox.isSelected()) {
             prefix = "";
         }
 

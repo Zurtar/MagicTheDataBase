@@ -1,6 +1,5 @@
 package Main;
 
-
 import forohfor.scryfall.api.Card;
 
 import java.util.ArrayList;
@@ -120,6 +119,9 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        searchPanel.setMaximumSize(new java.awt.Dimension(1599, 960));
+        searchPanel.setMinimumSize(new java.awt.Dimension(1599, 960));
 
         resultTable.setBackground(new java.awt.Color(204, 204, 204));
         resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -328,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(filterColourBox))
                                     .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(filterOracleBox)
-                                        .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,7 +449,6 @@ public class GUI extends javax.swing.JFrame {
         setResultTable(cardList);
     }//GEN-LAST:event_searchButtonActionPerformed
 
-
     private void updateCardInfo() {
         Card c = cardList.get(resultTable.getSelectedRow());
         cardImageLabel.setIcon(ScryfallInteraction.getImage(c, "small"));
@@ -456,7 +457,9 @@ public class GUI extends javax.swing.JFrame {
         setDisplay.setText(c.getSetCode());
         manaCostDisplay.setText(c.getManaCost());
         cardTypeDisplay.setText(c.getTypeLine());
-        colourDisplay.setText(c.getColorIdentity().get(0));
+        if (!c.getColorIdentity().isEmpty()) {
+            colourDisplay.setText(c.getColorIdentity().get(0));
+        }
         cardOracleDisplay.setText(c.getOracleText());
     }
 
@@ -487,7 +490,12 @@ public class GUI extends javax.swing.JFrame {
                 new String[]{
                     "Name", "Sets", "Mana costs", "Card Type", "Color(s)"
                 }
-        );
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         resultTable.setModel(tableModel);
     }
 
@@ -508,19 +516,8 @@ public class GUI extends javax.swing.JFrame {
 
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            //lol exception machine go brrrr
+        } catch (Exception ex) {
             java.util.logging.Logger.getLogger(GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -562,7 +559,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel largeImageLabel;
     private javax.swing.JTextField manaCostDisplay;
     private javax.swing.JLabel manaCostLabel;
-    private javax.swing.JTextField oracleText;
+    public static javax.swing.JTextField oracleText;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
     public static javax.swing.JTable resultTable;
