@@ -100,6 +100,8 @@ public class GUI extends javax.swing.JFrame {
         deckNameLabel = new javax.swing.JLabel();
         deckNameField = new javax.swing.JTextField();
         deckCommentLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        deckCommentArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -335,6 +337,12 @@ public class GUI extends javax.swing.JFrame {
         deckCommentLabel.setText("Comments:");
         searchPanel.add(deckCommentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(939, 485, -1, -1));
 
+        deckCommentArea.setColumns(20);
+        deckCommentArea.setRows(5);
+        jScrollPane2.setViewportView(deckCommentArea);
+
+        searchPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 480, -1, -1));
+
         jMenu1.setText("Deck Editor");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -480,6 +488,7 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField colourDisplay;
     public static javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
+    private javax.swing.JTextArea deckCommentArea;
     private javax.swing.JLabel deckCommentLabel;
     private javax.swing.JTextField deckNameField;
     private javax.swing.JLabel deckNameLabel;
@@ -495,6 +504,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     public static javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
