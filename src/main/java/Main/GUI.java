@@ -169,7 +169,7 @@ public class GUI extends javax.swing.JFrame {
                 cmcComboBoxActionPerformed(evt);
             }
         });
-        searchPanel.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
+        searchPanel.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
 
         setLabel.setText("Set(s):");
         searchPanel.add(setLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 274, -1, -1));
@@ -191,7 +191,7 @@ public class GUI extends javax.swing.JFrame {
         searchPanel.add(cardImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
 
         cardImageHeaderLabel.setText("Click Image For Large Version");
-        searchPanel.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 146, -1));
+        searchPanel.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 190, 30));
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
         searchPanel.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
@@ -208,7 +208,7 @@ public class GUI extends javax.swing.JFrame {
         searchPanel.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
-        searchPanel.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
+        searchPanel.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
 
         cardNameDisplay.setEditable(false);
         searchPanel.add(cardNameDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 245, 120, -1));
@@ -238,7 +238,7 @@ public class GUI extends javax.swing.JFrame {
         cardOracleDisplay.setRows(5);
         jScrollPane1.setViewportView(cardOracleDisplay);
 
-        searchPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 404, 187, 218));
+        searchPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 404, 210, 218));
 
         filterCMCBox.setText("Filter By CMC");
         searchPanel.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
