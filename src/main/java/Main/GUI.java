@@ -121,10 +121,11 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1180, 690));
 
-        searchPanel.setMaximumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setMinimumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setPreferredSize(new java.awt.Dimension(1266, 870));
+        searchPanel.setMaximumSize(new java.awt.Dimension(999999, 999999));
+        searchPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        searchPanel.setPreferredSize(new java.awt.Dimension(1180, 680));
         searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resultTable.setBackground(new java.awt.Color(204, 204, 204));
@@ -330,11 +331,11 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 892, Short.MAX_VALUE)
+            .addGap(0, 662, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
