@@ -60,12 +60,11 @@ public class GUI extends javax.swing.JFrame {
         largeImageFrame = new javax.swing.JFrame();
         largeImageLabel = new javax.swing.JLabel();
         largeImageHeader = new javax.swing.JLabel();
-        tabbedPane = new javax.swing.JTabbedPane();
-        searchPanel = new javax.swing.JPanel();
-        resultScrollPane = new javax.swing.JScrollPane();
-        resultTable = new javax.swing.JTable();
-        colourLabel = new javax.swing.JLabel();
-        searchButton = new javax.swing.JButton();
+        searchPanel2 = new javax.swing.JPanel();
+        resultScrollPane2 = new javax.swing.JScrollPane();
+        resultTable2 = new javax.swing.JTable();
+        colourLabel2 = new javax.swing.JLabel();
+        searchButton2 = new javax.swing.JButton();
         cardTypeDisplay = new javax.swing.JTextField();
         cmcComboBox = new javax.swing.JComboBox<>();
         setLabel = new javax.swing.JLabel();
@@ -94,7 +93,7 @@ public class GUI extends javax.swing.JFrame {
         filterOracleBox = new javax.swing.JCheckBox();
         filterNameBox = new javax.swing.JCheckBox();
         oracleText = new javax.swing.JTextField();
-        deckEditorPanel = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
         largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
@@ -121,14 +120,14 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 860));
 
-        searchPanel.setMaximumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setMinimumSize(new java.awt.Dimension(1280, 870));
-        searchPanel.setPreferredSize(new java.awt.Dimension(1266, 870));
-        searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        searchPanel2.setMaximumSize(new java.awt.Dimension(1280, 870));
+        searchPanel2.setMinimumSize(new java.awt.Dimension(1280, 870));
+        searchPanel2.setPreferredSize(new java.awt.Dimension(1266, 870));
+        searchPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        resultTable.setBackground(new java.awt.Color(204, 204, 204));
-        resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        resultTable.setModel(new javax.swing.table.DefaultTableModel(
+        resultTable2.setBackground(new java.awt.Color(204, 204, 204));
+        resultTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        resultTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -144,93 +143,73 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        resultTable.setRowHeight(24);
-        resultScrollPane.setViewportView(resultTable);
+        resultTable2.setRowHeight(24);
+        resultScrollPane2.setViewportView(resultTable2);
 
-        searchPanel.add(resultScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
+        searchPanel2.add(resultScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
 
-        colourLabel.setText("Colour(s):");
-        searchPanel.add(colourLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 355, -1, -1));
+        colourLabel2.setText("Colour(s):");
+        searchPanel2.add(colourLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 355, -1, -1));
 
-        searchButton.setText("Search");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-        searchPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
+        searchButton2.setText("Search");
+        searchPanel2.add(searchButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
 
         cardTypeDisplay.setEditable(false);
-        searchPanel.add(cardTypeDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 326, 120, -1));
+        searchPanel2.add(cardTypeDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 326, 120, -1));
 
         cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
-        cmcComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmcComboBoxActionPerformed(evt);
-            }
-        });
-        searchPanel.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
+        searchPanel2.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
 
         setLabel.setText("Set(s):");
-        searchPanel.add(setLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 274, -1, -1));
+        searchPanel2.add(setLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 274, -1, -1));
 
         jLabel1.setText("Oracle Text:");
-        searchPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 384, -1, -1));
+        searchPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 384, -1, -1));
 
         manaCostLabel.setText("Mana Cost:");
-        searchPanel.add(manaCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 303, -1, -1));
+        searchPanel2.add(manaCostLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 303, -1, -1));
 
         cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
-        cardImageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cardImageLabelMouseClicked(evt);
-            }
-        });
-        searchPanel.add(cardImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
+        searchPanel2.add(cardImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 30, -1, -1));
 
         cardImageHeaderLabel.setText("Click Image For Large Version");
-        searchPanel.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 190, 30));
+        searchPanel2.add(cardImageHeaderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 190, 30));
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
-        searchPanel.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
+        searchPanel2.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
 
         cardNameLabel.setText("Card Name:");
-        searchPanel.add(cardNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 248, -1, -1));
+        searchPanel2.add(cardNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 248, -1, -1));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
-        searchPanel.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        searchPanel2.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         creatureTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Advisor","Aetherborn","Ally","Angel","Antelope","Ape","Archer","Archon","Army","Artificer","Assassin","Assembly-Worker","Atog","Aurochs","Avatar","Azra","Badger","Barbarian","Basilisk","Bat","Bear","Beast","Beeble","Berserker","Bird","Blinkmoth","Boar","Bringer","Brushwagg","Camarid","Camel","Caribou","Carrier","Cat","Centaur","Cephalid","Chimera","Citizen","Cleric","Cockatrice","Construct","Coward","Crab","Crocodile","Cyclops","Dauthi","Demigod","Demon","Deserter","Devil","Dinosaur","Djinn","Dragon","Drake","Dreadnought","Drone","Druid","Dryad","Dwarf","Efreet","Egg","Elder","Eldrazi","Elemental","Elephant","Elf","Elk","Eye","Faerie","Ferret","Fish","Flagbearer","Fox","Frog","Fungus","Gargoyle","Germ","Giant","Gnome","Goat","Goblin","God","Golem","Gorgon","Graveborn","Gremlin","Griffin","Hag","Harpy","Hellion","Hippo","Hippogriff","Homarid","Homunculus","Horror","Horse","Hound","Human","Hydra","Hyena","Illusion","Imp","Incarnation","Insect","Jackal","Jellyfish","Juggernaut","Kavu","Kirin","Kithkin","Knight","Kobold","Kor","Kraken","Lamia","Lammasu","Leech","Leviathan","Lhurgoyf","Licid","Lizard","Manticore","Masticore","Mercenary","Merfolk","Metathran","Minion","Minotaur","Mole","Monger","Mongoose","Monk","Monkey","Moonfolk","Mouse","Mutant","Myr","Mystic","Naga","Nautilus","Nephilim","Nightmare","Nightstalker","Ninja","Noble","Noggle","Nomad","Nymph","Octopus","Ogre","Ooze","Orb","Orc","Orgg","Otter","Ouphe","Ox","Oyster","Pangolin","Peasant","Pegasus","Pentavite","Pest","Phelddagrif","Phoenix","Pilot","Pincher","Pirate","Plant","Praetor","Prism","Processor","Rabbit","Rat","Rebel","Reflection","Rhino","Rigger","Rogue","Sable","Salamander","Samurai","Sand","Saproling","Satyr","Scarecrow","Scion","Scorpion","Scout","Sculpture","Serf","Serpent","Servo","Shade","Shaman","Shapeshifter","Shark","Sheep","Siren","Skeleton","Slith","Sliver","Slug","Snake","Soldier","Soltari","Spawn","Specter","Spellshaper","Sphinx","Spider","Spike","Spirit","Splinter","Sponge","Squid","Squirrel","Starfish","Surrakar","Survivor","Tentacle","Tetravite","Thalakos","Thopter","Thrull","Treefolk","Trilobite","Triskelavite","Troll","Turtle","Unicorn","Vampire","Vedalken","Viashino","Volver","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wurm","Yeti","Zombie","Zubera" }));
-        searchPanel.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
+        searchPanel2.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
-        searchPanel.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
+        searchPanel2.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
 
         cardNameDisplay.setEditable(false);
-        searchPanel.add(cardNameDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 245, 120, -1));
+        searchPanel2.add(cardNameDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 245, 120, -1));
 
         manaCostDisplay.setEditable(false);
-        searchPanel.add(manaCostDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1018, 300, 120, -1));
+        searchPanel2.add(manaCostDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1018, 300, 120, -1));
 
         setDisplay.setEditable(false);
-        setDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setDisplayActionPerformed(evt);
-            }
-        });
-        searchPanel.add(setDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 271, 120, -1));
-        searchPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
+        searchPanel2.add(setDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 271, 120, -1));
+        searchPanel2.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
 
         colourDisplay.setEditable(false);
-        searchPanel.add(colourDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 352, 120, -1));
-        searchPanel.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
+        searchPanel2.add(colourDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(1017, 352, 120, -1));
+        searchPanel2.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
 
         cardTypeLabel.setText("Card Type:");
-        searchPanel.add(cardTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 329, -1, -1));
+        searchPanel2.add(cardTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 329, -1, -1));
 
         cardOracleDisplay.setEditable(false);
         cardOracleDisplay.setColumns(20);
@@ -238,91 +217,54 @@ public class GUI extends javax.swing.JFrame {
         cardOracleDisplay.setRows(5);
         jScrollPane1.setViewportView(cardOracleDisplay);
 
-        searchPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 404, 210, 218));
+        searchPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 404, 210, 200));
 
         filterCMCBox.setText("Filter By CMC");
-        searchPanel.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
+        searchPanel2.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
         filterColourBox.setText("Filter By Colour");
-        searchPanel.add(filterColourBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
+        searchPanel2.add(filterColourBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
 
         filterCardBox.setText("Filter By Cardtype");
-        searchPanel.add(filterCardBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+        searchPanel2.add(filterCardBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
         filterCreatureTypeBox.setText("Filter By Creature type");
-        searchPanel.add(filterCreatureTypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+        searchPanel2.add(filterCreatureTypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         filterOracleBox.setText("Filter By Oracle Text");
-        searchPanel.add(filterOracleBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        searchPanel2.add(filterOracleBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         filterNameBox.setText("Filter By Name");
-        searchPanel.add(filterNameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
+        searchPanel2.add(filterNameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
 
         oracleText.setMinimumSize(new java.awt.Dimension(28, 20));
         oracleText.setPreferredSize(new java.awt.Dimension(28, 20));
-        searchPanel.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 110, 23));
-
-        tabbedPane.addTab("Search Window", searchPanel);
-
-        javax.swing.GroupLayout deckEditorPanelLayout = new javax.swing.GroupLayout(deckEditorPanel);
-        deckEditorPanel.setLayout(deckEditorPanelLayout);
-        deckEditorPanelLayout.setHorizontalGroup(
-            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1163, Short.MAX_VALUE)
-        );
-        deckEditorPanelLayout.setVerticalGroup(
-            deckEditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
-        );
-
-        tabbedPane.addTab("Deck editor", deckEditorPanel);
+        searchPanel2.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 110, 23));
+        searchPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 320, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 1266, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(searchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(searchPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void setDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setDisplayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_setDisplayActionPerformed
-
-    private void cardImageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImageLabelMouseClicked
-        if (resultTable.getSelectedRow() == -1) {
-            searchField.setText("Select A Card From The List Before Seeing An Enlarged Image");
-            return;
-        }
-
-        Card c = cardList.get(resultTable.getSelectedRow());
-        largeImageLabel.setIcon(ScryfallInteraction.getImage(c, "normal"));
-        largeImageFrame.setBounds(0, 0, 488, 721);
-        largeImageFrame.setVisible(true);
-    }//GEN-LAST:event_cardImageLabelMouseClicked
-
-    private void cmcComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmcComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmcComboBoxActionPerformed
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        clearResultTable();
-
-        cardList = ScryfallInteraction.search(searchField.getText());
-        System.out.println(cardList.size());
-        if (cardList.isEmpty()) {
-            addRow();
-            resultTable.setValueAt("No Cards Were Found.", 0, 0);
-            return;
-        }
-        setResultTable(cardList);
-    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void updateCardInfo() {
         Card c = cardList.get(resultTable.getSelectedRow());
@@ -419,8 +361,9 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> colourComboBox;
     private javax.swing.JTextField colourDisplay;
     private javax.swing.JLabel colourLabel;
+    private javax.swing.JLabel colourLabel1;
+    private javax.swing.JLabel colourLabel2;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
-    public static javax.swing.JPanel deckEditorPanel;
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
     public static javax.swing.JCheckBox filterColourBox;
@@ -429,6 +372,7 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox filterOracleBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
@@ -437,13 +381,20 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField oracleText;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
+    private javax.swing.JScrollPane resultScrollPane1;
+    private javax.swing.JScrollPane resultScrollPane2;
     public static javax.swing.JTable resultTable;
+    public static javax.swing.JTable resultTable1;
+    public static javax.swing.JTable resultTable2;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton searchButton1;
+    private javax.swing.JButton searchButton2;
     private javax.swing.JTextField searchField;
-    public static javax.swing.JPanel searchPanel;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JPanel searchPanel1;
+    public static javax.swing.JPanel searchPanel2;
     private javax.swing.JTextField setDisplay;
     private javax.swing.JLabel setLabel;
-    public static javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
