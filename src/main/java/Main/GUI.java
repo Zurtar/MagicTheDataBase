@@ -97,12 +97,6 @@ public class GUI extends javax.swing.JFrame {
         cardImagePanel = new javax.swing.JPanel();
         cardImageLabel = new javax.swing.JLabel();
         cardImageHeaderLabel1 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jScrollPane2 = new javax.swing.JScrollPane();
-        deckTree = new javax.swing.JTree();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-=======
         deckNameLabel = new javax.swing.JLabel();
         deckNameField = new javax.swing.JTextField();
         deckCommentLabel = new javax.swing.JLabel();
@@ -111,7 +105,6 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
->>>>>>> 00a0eb200287be171fd0d45bcae8a20c0da4c981
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
         largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
@@ -335,17 +328,6 @@ public class GUI extends javax.swing.JFrame {
         searchPanel.add(cardInfoTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 390));
         cardInfoTabbedPane.getAccessibleContext().setAccessibleName("Card Info");
 
-<<<<<<< HEAD
-        jScrollPane2.setViewportView(deckTree);
-
-        searchPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 470, 230, 150));
-
-        jButton1.setText("Remove");
-        searchPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1093, 440, 80, -1));
-
-        jButton2.setText("Add");
-        searchPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 440, 60, -1));
-=======
         deckNameLabel.setText("Deck Name:");
         searchPanel.add(deckNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 450, -1, -1));
         searchPanel.add(deckNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 450, 140, -1));
@@ -375,29 +357,11 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
->>>>>>> 00a0eb200287be171fd0d45bcae8a20c0da4c981
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 1200, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-=======
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,7 +372,6 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
->>>>>>> 00a0eb200287be171fd0d45bcae8a20c0da4c981
         );
 
         pack();
@@ -517,31 +480,21 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField colourDisplay;
     public static javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
-<<<<<<< HEAD
-    private javax.swing.JTree deckTree;
-=======
     private javax.swing.JLabel deckCommentLabel;
     private javax.swing.JTextField deckNameField;
     private javax.swing.JLabel deckNameLabel;
->>>>>>> 00a0eb200287be171fd0d45bcae8a20c0da4c981
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
     public static javax.swing.JCheckBox filterColourBox;
     public static javax.swing.JCheckBox filterCreatureTypeBox;
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
-<<<<<<< HEAD
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-=======
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
->>>>>>> 00a0eb200287be171fd0d45bcae8a20c0da4c981
     public static javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
