@@ -3,8 +3,12 @@ package Main;
 import forohfor.scryfall.api.Card;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -96,12 +100,19 @@ public class GUI extends javax.swing.JFrame {
         cardOracleDisplay = new javax.swing.JTextArea();
         cardImagePanel = new javax.swing.JPanel();
         cardImageLabel = new javax.swing.JLabel();
-        cardImageHeaderLabel1 = new javax.swing.JLabel();
-        deckNameLabel = new javax.swing.JLabel();
-        deckNameField = new javax.swing.JTextField();
-        deckCommentLabel = new javax.swing.JLabel();
+        addCardButton = new javax.swing.JButton();
+        removeCardButton = new javax.swing.JButton();
+        deckInfoTabbedPane = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        deckTree = new javax.swing.JTree();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         deckCommentArea = new javax.swing.JTextArea();
+        deckCommentLabel = new javax.swing.JLabel();
+        deckNameLabel = new javax.swing.JLabel();
+        deckNameField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -131,12 +142,12 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 680));
+        setPreferredSize(new java.awt.Dimension(1260, 760));
 
         searchPanel.setMaximumSize(new java.awt.Dimension(999999, 999999));
         searchPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        searchPanel.setPreferredSize(new java.awt.Dimension(1200, 680));
-        searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        searchPanel.setPreferredSize(new java.awt.Dimension(1260, 760));
+        searchPanel.setVerifyInputWhenFocusTarget(false);
 
         resultTable.setBackground(new java.awt.Color(204, 204, 204));
         resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -159,53 +170,44 @@ public class GUI extends javax.swing.JFrame {
         resultTable.setRowHeight(24);
         resultScrollPane.setViewportView(resultTable);
 
-        searchPanel.add(resultScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 925, 449));
-
         searchButton.setText("Search");
-        searchPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 75, -1, -1));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
-        searchPanel.add(cmcComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 90, -1));
 
         cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
-        searchPanel.add(cardTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 90, -1));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
         titleLabel.setText("Magic: The Database");
-        searchPanel.add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         creatureTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Advisor","Aetherborn","Ally","Angel","Antelope","Ape","Archer","Archon","Army","Artificer","Assassin","Assembly-Worker","Atog","Aurochs","Avatar","Azra","Badger","Barbarian","Basilisk","Bat","Bear","Beast","Beeble","Berserker","Bird","Blinkmoth","Boar","Bringer","Brushwagg","Camarid","Camel","Caribou","Carrier","Cat","Centaur","Cephalid","Chimera","Citizen","Cleric","Cockatrice","Construct","Coward","Crab","Crocodile","Cyclops","Dauthi","Demigod","Demon","Deserter","Devil","Dinosaur","Djinn","Dragon","Drake","Dreadnought","Drone","Druid","Dryad","Dwarf","Efreet","Egg","Elder","Eldrazi","Elemental","Elephant","Elf","Elk","Eye","Faerie","Ferret","Fish","Flagbearer","Fox","Frog","Fungus","Gargoyle","Germ","Giant","Gnome","Goat","Goblin","God","Golem","Gorgon","Graveborn","Gremlin","Griffin","Hag","Harpy","Hellion","Hippo","Hippogriff","Homarid","Homunculus","Horror","Horse","Hound","Human","Hydra","Hyena","Illusion","Imp","Incarnation","Insect","Jackal","Jellyfish","Juggernaut","Kavu","Kirin","Kithkin","Knight","Kobold","Kor","Kraken","Lamia","Lammasu","Leech","Leviathan","Lhurgoyf","Licid","Lizard","Manticore","Masticore","Mercenary","Merfolk","Metathran","Minion","Minotaur","Mole","Monger","Mongoose","Monk","Monkey","Moonfolk","Mouse","Mutant","Myr","Mystic","Naga","Nautilus","Nephilim","Nightmare","Nightstalker","Ninja","Noble","Noggle","Nomad","Nymph","Octopus","Ogre","Ooze","Orb","Orc","Orgg","Otter","Ouphe","Ox","Oyster","Pangolin","Peasant","Pegasus","Pentavite","Pest","Phelddagrif","Phoenix","Pilot","Pincher","Pirate","Plant","Praetor","Prism","Processor","Rabbit","Rat","Rebel","Reflection","Rhino","Rigger","Rogue","Sable","Salamander","Samurai","Sand","Saproling","Satyr","Scarecrow","Scion","Scorpion","Scout","Sculpture","Serf","Serpent","Servo","Shade","Shaman","Shapeshifter","Shark","Sheep","Siren","Skeleton","Slith","Sliver","Slug","Snake","Soldier","Soltari","Spawn","Specter","Spellshaper","Sphinx","Spider","Spike","Spirit","Splinter","Sponge","Squid","Squirrel","Starfish","Surrakar","Survivor","Tentacle","Tetravite","Thalakos","Thopter","Thrull","Treefolk","Trilobite","Triskelavite","Troll","Turtle","Unicorn","Vampire","Vedalken","Viashino","Volver","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wurm","Yeti","Zombie","Zubera" }));
-        searchPanel.add(creatureTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 90, -1));
 
         colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Blue", "Black", "Red", "Green" }));
-        searchPanel.add(colourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 90, -1));
-        searchPanel.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 502, -1));
-        searchPanel.add(resultPageCountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 883, -1, -1));
 
         filterCMCBox.setText("Filter By CMC");
-        searchPanel.add(filterCMCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
         filterColourBox.setText("Filter By Colour");
-        searchPanel.add(filterColourBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
 
         filterCardBox.setText("Filter By Cardtype");
-        searchPanel.add(filterCardBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
         filterCreatureTypeBox.setText("Filter By Creature type");
-        searchPanel.add(filterCreatureTypeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         filterOracleBox.setText("Filter By Oracle Text");
-        searchPanel.add(filterOracleBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         filterNameBox.setText("Filter By Name");
-        searchPanel.add(filterNameBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
 
         oracleText.setMinimumSize(new java.awt.Dimension(28, 20));
         oracleText.setPreferredSize(new java.awt.Dimension(28, 20));
-        searchPanel.add(oracleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 120, 110, 23));
 
         cardInfoTabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cardInfoTabbedPane.setPreferredSize(new java.awt.Dimension(258, 383));
+
+        cardDescriptionPanel.setPreferredSize(new java.awt.Dimension(258, 383));
 
         cardNameLabel.setText("Card Name:");
 
@@ -242,29 +244,31 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
-                        .addComponent(manaCostLabel)
-                        .addGap(12, 12, 12)
-                        .addComponent(manaCostDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(oracelTextLabel)
-                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
-                        .addComponent(cardTypeLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(cardTypeDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(oracelTextLabel)
+                        .addGap(0, 171, Short.MAX_VALUE))
                     .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                         .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cardNameLabel)
                             .addComponent(setLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(setDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cardNameDisplay)
+                            .addComponent(setDisplay)))
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
+                        .addComponent(manaCostLabel)
+                        .addGap(12, 12, 12)
+                        .addComponent(manaCostDisplay))
+                    .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
+                        .addComponent(cardTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cardTypeDisplay))
                     .addGroup(cardDescriptionPanelLayout.createSequentialGroup()
                         .addComponent(colourLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(colourDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(colourDisplay)))
+                .addContainerGap())
         );
         cardDescriptionPanelLayout.setVerticalGroup(
             cardDescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,57 +295,213 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(colourDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(oracelTextLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
-        cardInfoTabbedPane.addTab("Card Description'", cardDescriptionPanel);
+        cardInfoTabbedPane.addTab("Card Description", cardDescriptionPanel);
+
+        cardImagePanel.setPreferredSize(new java.awt.Dimension(258, 383));
 
         cardImageLabel.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         cardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cardImageLabel.setPreferredSize(new java.awt.Dimension(146, 204));
-
-        cardImageHeaderLabel1.setText("Click Image For Large Version");
+        cardImageLabel.setPreferredSize(new java.awt.Dimension(258, 383));
 
         javax.swing.GroupLayout cardImagePanelLayout = new javax.swing.GroupLayout(cardImagePanel);
         cardImagePanel.setLayout(cardImagePanelLayout);
         cardImagePanelLayout.setHorizontalGroup(
             cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cardImagePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardImageHeaderLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+            .addComponent(cardImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
         );
         cardImagePanelLayout.setVerticalGroup(
             cardImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cardImagePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardImageHeaderLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+            .addComponent(cardImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
         );
 
         cardInfoTabbedPane.addTab("Card Image", cardImagePanel);
 
-        searchPanel.add(cardInfoTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 390));
-        cardInfoTabbedPane.getAccessibleContext().setAccessibleName("Card Info");
+        addCardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/addIcon.png"))); // NOI18N
+        addCardButton.setPreferredSize(new java.awt.Dimension(39, 39));
+        addCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCardButtonActionPerformed(evt);
+            }
+        });
 
-        deckNameLabel.setText("Deck Name:");
-        searchPanel.add(deckNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 450, -1, -1));
-        searchPanel.add(deckNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 450, 140, -1));
+        removeCardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/removeIcon.png"))); // NOI18N
 
-        deckCommentLabel.setText("Comments:");
-        searchPanel.add(deckCommentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(939, 485, -1, -1));
+        deckInfoTabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deckInfoTabbedPane.setMinimumSize(new java.awt.Dimension(240, 248));
+        deckInfoTabbedPane.setPreferredSize(new java.awt.Dimension(240, 248));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(231, 217));
+
+        deckTree.setBackground(new java.awt.Color(240, 240, 240));
+        deckTree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollPane3.setViewportView(deckTree);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        deckInfoTabbedPane.addTab("List", jPanel1);
 
         deckCommentArea.setColumns(20);
         deckCommentArea.setRows(5);
         jScrollPane2.setViewportView(deckCommentArea);
 
-        searchPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 480, -1, -1));
+        deckCommentLabel.setText("Comments:");
+
+        deckNameLabel.setText("Deck Name:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deckCommentLabel)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(deckNameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 61, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deckNameLabel)
+                    .addComponent(deckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deckCommentLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        deckInfoTabbedPane.addTab(" Info", jPanel2);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Deck");
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLabel)
+                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(searchButton)
+                        .addGap(15, 15, 15)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterColourBox)
+                            .addComponent(filterCMCBox)
+                            .addComponent(filterCardBox)
+                            .addComponent(filterCreatureTypeBox))
+                        .addGap(25, 25, 25)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 925, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGap(600, 600, 600)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(filterOracleBox)
+                                .addGap(37, 37, 37)
+                                .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filterNameBox))))
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(searchPanelLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(addCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(removeCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                            .addGap(5, 5, 5)
+                            .addComponent(deckInfoTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cardInfoTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(titleLabel)
+                                .addGap(7, 7, 7)
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(searchButton))
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(filterColourBox)
+                                .addGap(7, 7, 7)
+                                .addComponent(filterCMCBox)
+                                .addGap(7, 7, 7)
+                                .addComponent(filterCardBox)
+                                .addGap(7, 7, 7)
+                                .addComponent(filterCreatureTypeBox))
+                            .addGroup(searchPanelLayout.createSequentialGroup()
+                                .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(cmcComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(cardTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(creatureTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterOracleBox)
+                            .addComponent(oracleText, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addComponent(filterNameBox)
+                        .addGap(0, 0, 0)
+                        .addComponent(resultScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cardInfoTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(addCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(removeCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deckInfoTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(29, 29, 29))
+        );
+
+        cardInfoTabbedPane.getAccessibleContext().setAccessibleName("Card Info");
 
         jMenu1.setText("Deck Editor");
 
@@ -370,16 +530,11 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -389,9 +544,23 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void addCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addCardButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        cardList = ScryfallInteraction.search(searchField.getText());
+        if (cardList.isEmpty()) {
+            addRow();
+            resultTable.setValueAt("No Cards Were Found.", 0, 0);
+            return;
+        }
+        setResultTable(cardList);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     private void updateCardInfo() {
         Card c = cardList.get(resultTable.getSelectedRow());
-        cardImageLabel.setIcon(ScryfallInteraction.getImage(c, "small"));
+        cardImageLabel.setIcon(ScryfallInteraction.getImage(c));
 
         cardNameDisplay.setText(c.getName());
         setDisplay.setText(c.getSetCode());
@@ -443,25 +612,36 @@ public class GUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+            * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+             */
+ /*   try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
+            if ("Nimbus".equals(info.getName())) {
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
+            
+            }
             }
             //lol exception machine go brrrr
-        } catch (Exception ex) {
+            } catch (Exception ex) {
             java.util.logging.Logger.getLogger(GUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }*/
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            //</editor-fold>
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -472,55 +652,62 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel cardDescriptionPanel;
-    public static javax.swing.JLabel cardImageHeaderLabel1;
-    public static javax.swing.JLabel cardImageLabel;
-    public static javax.swing.JPanel cardImagePanel;
-    public static javax.swing.JTabbedPane cardInfoTabbedPane;
-    public static javax.swing.JTextField cardNameDisplay;
-    public static javax.swing.JLabel cardNameLabel;
+    private javax.swing.JButton addCardButton;
+    private javax.swing.JPanel cardDescriptionPanel;
+    private javax.swing.JLabel cardImageLabel;
+    private javax.swing.JPanel cardImagePanel;
+    private javax.swing.JTabbedPane cardInfoTabbedPane;
+    private javax.swing.JTextField cardNameDisplay;
+    private javax.swing.JLabel cardNameLabel;
     private javax.swing.JTextArea cardOracleDisplay;
     public static javax.swing.JComboBox<String> cardTypeComboBox;
-    public static javax.swing.JTextField cardTypeDisplay;
-    public static javax.swing.JLabel cardTypeLabel;
+    private javax.swing.JTextField cardTypeDisplay;
+    private javax.swing.JLabel cardTypeLabel;
     public static javax.swing.JComboBox<String> cmcComboBox;
     public static javax.swing.JComboBox<String> colourComboBox;
-    public static javax.swing.JTextField colourDisplay;
-    public static javax.swing.JLabel colourLabel;
+    private javax.swing.JTextField colourDisplay;
+    private javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
     private javax.swing.JTextArea deckCommentArea;
     private javax.swing.JLabel deckCommentLabel;
+    private javax.swing.JTabbedPane deckInfoTabbedPane;
     private javax.swing.JTextField deckNameField;
     private javax.swing.JLabel deckNameLabel;
+    private javax.swing.JTree deckTree;
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
     public static javax.swing.JCheckBox filterColourBox;
     public static javax.swing.JCheckBox filterCreatureTypeBox;
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    public static javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
-    public static javax.swing.JTextField manaCostDisplay;
-    public static javax.swing.JLabel manaCostLabel;
-    public static javax.swing.JLabel oracelTextLabel;
+    private javax.swing.JTextField manaCostDisplay;
+    private javax.swing.JLabel manaCostLabel;
+    private javax.swing.JLabel oracelTextLabel;
     public static javax.swing.JTextField oracleText;
+    private javax.swing.JButton removeCardButton;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
-    public static javax.swing.JTable resultTable;
+    private javax.swing.JTable resultTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    public static javax.swing.JPanel searchPanel;
-    public static javax.swing.JTextField setDisplay;
-    public static javax.swing.JLabel setLabel;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JTextField setDisplay;
+    private javax.swing.JLabel setLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

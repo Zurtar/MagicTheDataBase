@@ -10,6 +10,7 @@ package Main;
  * @author Stevep
  */
 import forohfor.scryfall.api.*;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,12 +41,12 @@ public class ScryfallInteraction {
         }
         if (GUI.filterCreatureTypeBox.isSelected()) {
             prefix += "t:" + GUI.creatureTypeComboBox.getSelectedItem() + " ";
-        } 
-        
+        }
+
         if (GUI.filterOracleBox.isSelected()) {
             prefix += "o:\" " + GUI.oracleText.getText() + "\"";
-        } 
-        
+        }
+
         //wrong!
         if (GUI.filterNameBox.isSelected()) {
             prefix = "";
@@ -54,12 +55,12 @@ public class ScryfallInteraction {
         return prefix;
     }
 
-    public static ImageIcon getImage(Card c, String imageType) {
+    public static ImageIcon getImage(Card c) {
         ImageIcon icon = null;
         try {
-            URL url = new URL(c.getImageURI(imageType));
+            URL url = new URL(c.getImageURI("large"));
             BufferedImage img = ImageIO.read(url);
-            icon = new ImageIcon(img);
+            icon = new ImageIcon(img.getScaledInstance(258, 360, Image.SCALE_SMOOTH));
         } catch (Exception ex) {
         }
         return icon;
