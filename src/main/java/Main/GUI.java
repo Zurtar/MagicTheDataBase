@@ -11,7 +11,12 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreeSelectionModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,8 +39,22 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         clearResultTable();
 
-        ListSelectionModel selectionModel = resultTable.getSelectionModel();
-        selectionModel.addListSelectionListener(new ListSelectionListener() {
+        deckTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        deckTree.addTreeSelectionListener(new TreeSelectionListener() {
+            public void valueChanged(TreeSelectionEvent e) {
+                TreeNode node = (TreeNode) deckTree.getLastSelectedPathComponent();
+                if (node == null) {
+                    return;
+                }
+                updateCardInfo();
+            }
+        });
+
+        ListSelectionModel listSelectionModel = resultTable.getSelectionModel();
+        listSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        listSelectionModel.addListSelectionListener(new ListSelectionListener() {
+
             public void valueChanged(ListSelectionEvent e) {
                 /**
                  * we do this so that when the value is changing from selected
@@ -49,7 +68,6 @@ public class GUI extends javax.swing.JFrame {
                 updateCardInfo();
             }
         });
-
     }
 
     /**
@@ -103,16 +121,16 @@ public class GUI extends javax.swing.JFrame {
         addCardButton = new javax.swing.JButton();
         removeCardButton = new javax.swing.JButton();
         deckInfoTabbedPane = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        deckPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         deckTree = new javax.swing.JTree();
-        jPanel2 = new javax.swing.JPanel();
+        deckInfoPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         deckCommentArea = new javax.swing.JTextArea();
         deckCommentLabel = new javax.swing.JLabel();
         deckNameLabel = new javax.swing.JLabel();
         deckNameField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        deckLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -340,24 +358,26 @@ public class GUI extends javax.swing.JFrame {
         deckInfoTabbedPane.setMinimumSize(new java.awt.Dimension(240, 248));
         deckInfoTabbedPane.setPreferredSize(new java.awt.Dimension(240, 248));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(231, 217));
+        deckPanel.setPreferredSize(new java.awt.Dimension(231, 217));
 
         deckTree.setBackground(new java.awt.Color(240, 240, 240));
         deckTree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Deck");
+        deckTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane3.setViewportView(deckTree);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout deckPanelLayout = new javax.swing.GroupLayout(deckPanel);
+        deckPanel.setLayout(deckPanelLayout);
+        deckPanelLayout.setHorizontalGroup(
+            deckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        deckPanelLayout.setVerticalGroup(
+            deckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
         );
 
-        deckInfoTabbedPane.addTab("List", jPanel1);
+        deckInfoTabbedPane.addTab("List", deckPanel);
 
         deckCommentArea.setColumns(20);
         deckCommentArea.setRows(5);
@@ -367,29 +387,29 @@ public class GUI extends javax.swing.JFrame {
 
         deckNameLabel.setText("Deck Name:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout deckInfoPanelLayout = new javax.swing.GroupLayout(deckInfoPanel);
+        deckInfoPanel.setLayout(deckInfoPanelLayout);
+        deckInfoPanelLayout.setHorizontalGroup(
+            deckInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deckInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deckInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deckInfoPanelLayout.createSequentialGroup()
+                        .addGroup(deckInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(deckCommentLabel)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(deckInfoPanelLayout.createSequentialGroup()
                                 .addComponent(deckNameLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(deckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 61, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        deckInfoPanelLayout.setVerticalGroup(
+            deckInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deckInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(deckInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deckNameLabel)
                     .addComponent(deckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -399,10 +419,10 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        deckInfoTabbedPane.addTab(" Info", jPanel2);
+        deckInfoTabbedPane.addTab(" Info", deckInfoPanel);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Deck");
+        deckLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        deckLabel.setText("Deck");
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -442,7 +462,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(searchPanelLayout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel1)
+                            .addComponent(deckLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(addCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,10 +517,10 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(cardInfoTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deckLabel)
                             .addComponent(addCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(removeCardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(removeCardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deckInfoTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(29, 29, 29))
@@ -551,6 +571,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void addCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCardButtonActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_addCardButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -642,14 +663,22 @@ public class GUI extends javax.swing.JFrame {
             }*/
             javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             //</editor-fold>
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
@@ -662,26 +691,29 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCardButton;
-    private javax.swing.JPanel cardDescriptionPanel;
-    private javax.swing.JLabel cardImageLabel;
-    private javax.swing.JPanel cardImagePanel;
-    private javax.swing.JTabbedPane cardInfoTabbedPane;
-    private javax.swing.JTextField cardNameDisplay;
-    private javax.swing.JLabel cardNameLabel;
+    public static javax.swing.JPanel cardDescriptionPanel;
+    public static javax.swing.JLabel cardImageLabel;
+    public static javax.swing.JPanel cardImagePanel;
+    public static javax.swing.JTabbedPane cardInfoTabbedPane;
+    public static javax.swing.JTextField cardNameDisplay;
+    public static javax.swing.JLabel cardNameLabel;
     private javax.swing.JTextArea cardOracleDisplay;
     public static javax.swing.JComboBox<String> cardTypeComboBox;
-    private javax.swing.JTextField cardTypeDisplay;
-    private javax.swing.JLabel cardTypeLabel;
+    public static javax.swing.JTextField cardTypeDisplay;
+    public static javax.swing.JLabel cardTypeLabel;
     public static javax.swing.JComboBox<String> cmcComboBox;
     public static javax.swing.JComboBox<String> colourComboBox;
-    private javax.swing.JTextField colourDisplay;
-    private javax.swing.JLabel colourLabel;
+    public static javax.swing.JTextField colourDisplay;
+    public static javax.swing.JLabel colourLabel;
     public static javax.swing.JComboBox<String> creatureTypeComboBox;
     private javax.swing.JTextArea deckCommentArea;
     private javax.swing.JLabel deckCommentLabel;
+    private javax.swing.JPanel deckInfoPanel;
     private javax.swing.JTabbedPane deckInfoTabbedPane;
+    private javax.swing.JLabel deckLabel;
     private javax.swing.JTextField deckNameField;
     private javax.swing.JLabel deckNameLabel;
+    private javax.swing.JPanel deckPanel;
     private javax.swing.JTree deckTree;
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
@@ -689,34 +721,31 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox filterCreatureTypeBox;
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
-    private javax.swing.JTextField manaCostDisplay;
-    private javax.swing.JLabel manaCostLabel;
-    private javax.swing.JLabel oracelTextLabel;
+    public static javax.swing.JTextField manaCostDisplay;
+    public static javax.swing.JLabel manaCostLabel;
+    public static javax.swing.JLabel oracelTextLabel;
     public static javax.swing.JTextField oracleText;
     private javax.swing.JButton removeCardButton;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
-    private javax.swing.JTable resultTable;
+    public static javax.swing.JTable resultTable;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JPanel searchPanel;
-    private javax.swing.JTextField setDisplay;
-    private javax.swing.JLabel setLabel;
+    public static javax.swing.JPanel searchPanel;
+    public static javax.swing.JTextField setDisplay;
+    public static javax.swing.JLabel setLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
