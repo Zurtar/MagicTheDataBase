@@ -330,6 +330,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         removeCardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/removeIcon.png"))); // NOI18N
+        removeCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCardButtonActionPerformed(evt);
+            }
+        });
 
         deckInfoTabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         deckInfoTabbedPane.setMinimumSize(new java.awt.Dimension(240, 248));
@@ -557,6 +562,10 @@ public class GUI extends javax.swing.JFrame {
         }
         setResultTable(cardList);
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeCardButtonActionPerformed
 
     private void updateCardInfo() {
         Card c = cardList.get(resultTable.getSelectedRow());
