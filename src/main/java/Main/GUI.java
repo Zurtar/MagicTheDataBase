@@ -14,7 +14,9 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -34,39 +36,32 @@ public class GUI extends javax.swing.JFrame {
      */
     DefaultTableModel tableModel;
     ArrayList<Card> cardList;
-
+    
     public GUI() {
         initComponents();
         clearResultTable();
-
-        deckTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-        deckTree.addTreeSelectionListener(new TreeSelectionListener() {
-            public void valueChanged(TreeSelectionEvent e) {
-                TreeNode node = (TreeNode) deckTree.getLastSelectedPathComponent();
-                if (node == null) {
-                    return;
-                }
-                updateCardInfo();
-            }
-        });
-
+        
         ListSelectionModel listSelectionModel = resultTable.getSelectionModel();
         listSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        listSelectionModel.addListSelectionListener(new ListSelectionListener() {
-
-            public void valueChanged(ListSelectionEvent e) {
-                /**
-                 * we do this so that when the value is changing from selected
-                 * to deselected it does not fetch the image for nothing. This
-                 * prevents our selectionValueChanged() method from being called
-                 * twice every time a card is selected
-                 */
-                if (e.getValueIsAdjusting()) {
-                    return;
-                }
-                updateCardInfo();
+        
+        listSelectionModel.addListSelectionListener((ListSelectionEvent e) -> {
+            if (e.getValueIsAdjusting()) {
+                return;
             }
+            updateCardInfo(0);
+        });
+
+        //DECK TREE
+        TreeInteraction.setupTree();
+        
+        deckTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        deckTree.addTreeSelectionListener((TreeSelectionEvent e) -> {
+            TreeNode node = (TreeNode) deckTree.getLastSelectedPathComponent();
+            if (node == null) {
+                return;
+            }
+            System.out.println("Selection Listener Fired");
+            //updateCardInfo();
         });
     }
 
@@ -122,7 +117,7 @@ public class GUI extends javax.swing.JFrame {
         removeCardButton = new javax.swing.JButton();
         deckInfoTabbedPane = new javax.swing.JTabbedPane();
         deckPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        deckScrollPane = new javax.swing.JScrollPane();
         deckTree = new javax.swing.JTree();
         deckInfoPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -131,11 +126,11 @@ public class GUI extends javax.swing.JFrame {
         deckNameLabel = new javax.swing.JLabel();
         deckNameField = new javax.swing.JTextField();
         deckLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenuBar();
+        deckMenu = new javax.swing.JMenu();
+        newDeckMenuItem = new javax.swing.JMenuItem();
+        loadDeckMenuItem = new javax.swing.JMenuItem();
+        saveDeckMenuItem = new javax.swing.JMenuItem();
 
         largeImageLabel.setMaximumSize(new java.awt.Dimension(488, 700));
         largeImageLabel.setMinimumSize(new java.awt.Dimension(488, 680));
@@ -197,7 +192,7 @@ public class GUI extends javax.swing.JFrame {
 
         cmcComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3","4","5","6","7","8","9","10","11","12", }));
 
-        cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Insant","Sorcery" }));
+        cardTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enchantment", "Creature", "Artifact", "Land","Instant","Sorcery" }));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 102, 0));
@@ -364,17 +359,17 @@ public class GUI extends javax.swing.JFrame {
         deckTree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Deck");
         deckTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(deckTree);
+        deckScrollPane.setViewportView(deckTree);
 
         javax.swing.GroupLayout deckPanelLayout = new javax.swing.GroupLayout(deckPanel);
         deckPanel.setLayout(deckPanelLayout);
         deckPanelLayout.setHorizontalGroup(
             deckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+            .addComponent(deckScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
         deckPanelLayout.setVerticalGroup(
             deckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+            .addComponent(deckScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
         );
 
         deckInfoTabbedPane.addTab("List", deckPanel);
@@ -528,28 +523,28 @@ public class GUI extends javax.swing.JFrame {
 
         cardInfoTabbedPane.getAccessibleContext().setAccessibleName("Card Info");
 
-        jMenu1.setText("Deck Editor");
+        deckMenu.setText("Deck Editor");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("New Deck");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        newDeckMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newDeckMenuItem.setText("New Deck");
+        newDeckMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        deckMenu.add(newDeckMenuItem);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Load Deck");
-        jMenu1.add(jMenuItem2);
+        loadDeckMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        loadDeckMenuItem.setText("Load Deck");
+        deckMenu.add(loadDeckMenuItem);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setText("Save Deck");
-        jMenu1.add(jMenuItem3);
+        saveDeckMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        saveDeckMenuItem.setText("Save Deck");
+        deckMenu.add(saveDeckMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(deckMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -565,13 +560,13 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ActionPerformed
 
     private void addCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCardButtonActionPerformed
         // TODO add your handling code here:
-
+        TreeInteraction.addTreeNode(cardList.get(resultTable.getSelectedRow()));
     }//GEN-LAST:event_addCardButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -587,11 +582,15 @@ public class GUI extends javax.swing.JFrame {
     private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCardButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_removeCardButtonActionPerformed
-
-    private void updateCardInfo() {
-        Card c = cardList.get(resultTable.getSelectedRow());
-        cardImageLabel.setIcon(ScryfallInteraction.getImage(c));
-
+    
+    private void updateCardInfo(int source) {
+        Card c = null;
+        if (source == 0) {
+            c = cardList.get(resultTable.getSelectedRow());
+        } else {
+            //fetch card Via JTree
+        }
+        cardImageLabel.setIcon(ScryfallInteraction.getCardImage(c));
         cardNameDisplay.setText(c.getName());
         setDisplay.setText(c.getSetCode());
         manaCostDisplay.setText(c.getManaCost());
@@ -601,7 +600,7 @@ public class GUI extends javax.swing.JFrame {
         }
         cardOracleDisplay.setText(c.getOracleText());
     }
-
+    
     private void setResultTable(ArrayList<Card> cardList) {
         //updating the size of our JTable
         tableModel.setRowCount(cardList.size());
@@ -617,12 +616,12 @@ public class GUI extends javax.swing.JFrame {
             resultTable.setValueAt(currentCard.getColorIdentity(), i, 4);
         }
     }
-
+    
     private void addRow() {
         tableModel.addRow(new Object[5]);
         tableModel.fireTableDataChanged();
     }
-
+    
     private void clearResultTable() {
         tableModel = new DefaultTableModel(
                 new Object[][]{},
@@ -664,21 +663,7 @@ public class GUI extends javax.swing.JFrame {
             javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             //</editor-fold>
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            Logger.getLogger(GUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(GUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
-
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(GUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
         }
 
         /* Create and display the form */
@@ -711,36 +696,36 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel deckInfoPanel;
     private javax.swing.JTabbedPane deckInfoTabbedPane;
     private javax.swing.JLabel deckLabel;
+    private javax.swing.JMenu deckMenu;
     private javax.swing.JTextField deckNameField;
     private javax.swing.JLabel deckNameLabel;
     private javax.swing.JPanel deckPanel;
-    private javax.swing.JTree deckTree;
+    private javax.swing.JScrollPane deckScrollPane;
+    public static javax.swing.JTree deckTree;
     public static javax.swing.JCheckBox filterCMCBox;
     public static javax.swing.JCheckBox filterCardBox;
     public static javax.swing.JCheckBox filterColourBox;
     public static javax.swing.JCheckBox filterCreatureTypeBox;
     public static javax.swing.JCheckBox filterNameBox;
     public static javax.swing.JCheckBox filterOracleBox;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JFrame largeImageFrame;
     private javax.swing.JLabel largeImageHeader;
     private javax.swing.JLabel largeImageLabel;
+    private javax.swing.JMenuItem loadDeckMenuItem;
     public static javax.swing.JTextField manaCostDisplay;
     public static javax.swing.JLabel manaCostLabel;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem newDeckMenuItem;
     public static javax.swing.JLabel oracelTextLabel;
     public static javax.swing.JTextField oracleText;
     private javax.swing.JButton removeCardButton;
     private javax.swing.JLabel resultPageCountLabel;
     private javax.swing.JScrollPane resultScrollPane;
     public static javax.swing.JTable resultTable;
+    private javax.swing.JMenuItem saveDeckMenuItem;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     public static javax.swing.JPanel searchPanel;

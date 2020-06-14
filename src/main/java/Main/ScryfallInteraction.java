@@ -55,14 +55,26 @@ public class ScryfallInteraction {
         return prefix;
     }
 
-    public static ImageIcon getImage(Card c) {
+    public static ImageIcon getCardImage(Card c) {
         ImageIcon icon = null;
         try {
-            URL url = new URL(c.getImageURI("large"));
-            BufferedImage img = ImageIO.read(url);
+            BufferedImage img = c.getImage("large");
             icon = new ImageIcon(img.getScaledInstance(258, 360, Image.SCALE_SMOOTH));
         } catch (Exception ex) {
         }
         return icon;
     }
+
+    public static String getCardType(Card c) {
+        String typeLine = c.getTypeLine();
+        String[] types = {"Creature", "Enchanment", "Instant", "Sorcery"};
+
+        for (String type : types) {
+            if (typeLine.contains(type)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }
