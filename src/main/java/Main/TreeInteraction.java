@@ -43,13 +43,10 @@ public class TreeInteraction {
             }
         }
 
-        DefaultMutableTreeNode child = new DefaultMutableTreeNode(c.getName());
+        DefaultMutableTreeNode child = new DefaultMutableTreeNode(c);
         int childCount = parent.getChildCount();
 
-        if (childCount != 0) {
-            treeModel.insertNodeInto(child, parent, childCount + 1);
-        }
-        treeModel.insertNodeInto(child, parent, 0);
+        parent.add(child);
         treeModel.reload();
     }
 
@@ -60,5 +57,14 @@ public class TreeInteraction {
 
     public static DefaultTreeModel getModel() {
         return treeModel;
+    }
+
+    public static void removeSelection() {
+        GUI.deckTree.clearSelection();
+    }
+
+    public static void getSelectedNode() {
+        DefaultMutableTreeNode nodeInfo = (DefaultMutableTreeNode) GUI.deckTree.getLastSelectedPathComponent();
+        nodeInfo.getUserObject();
     }
 }

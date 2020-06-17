@@ -9,7 +9,8 @@
         <dependency>
             <groupId>io.github.forohforerror</groupId>
             <artifactId>ScryfallAPIBinding</artifactId>
-            <version>1.11.1</version>
+            <version>1.10.2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
     <properties>

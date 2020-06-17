@@ -32,6 +32,14 @@ public class Deck {
         this.cardList = cardList;
     }
 
+    public void addCard(Card c) {
+        cardList.add(c);
+    }
+
+    public void removeCard(Card c) {
+        cardList.remove(c);
+    }
+
     public String getName() {
         return name;
     }
@@ -43,6 +51,5 @@ public class Deck {
     public void saveDeck() {
         //
     }
-    
-    
+
 }

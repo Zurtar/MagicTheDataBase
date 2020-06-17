@@ -3,20 +3,11 @@ package Main;
 import forohfor.scryfall.api.Card;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -36,27 +27,29 @@ public class GUI extends javax.swing.JFrame {
      */
     DefaultTableModel tableModel;
     ArrayList<Card> cardList;
-    
+
     public GUI() {
         initComponents();
         clearResultTable();
-        
+
         ListSelectionModel listSelectionModel = resultTable.getSelectionModel();
         listSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+
         listSelectionModel.addListSelectionListener((ListSelectionEvent e) -> {
             if (e.getValueIsAdjusting()) {
                 return;
             }
+            GUI.deckTree.clearSelection();
             updateCardInfo(0);
         });
 
         //DECK TREE
         TreeInteraction.setupTree();
-        
+
         deckTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         deckTree.addTreeSelectionListener((TreeSelectionEvent e) -> {
             TreeNode node = (TreeNode) deckTree.getLastSelectedPathComponent();
+            resultTable.clearSelection();
             if (node == null) {
                 return;
             }
@@ -582,13 +575,12 @@ public class GUI extends javax.swing.JFrame {
     private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCardButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_removeCardButtonActionPerformed
-    
+
     private void updateCardInfo(int source) {
         Card c = null;
         if (source == 0) {
             c = cardList.get(resultTable.getSelectedRow());
         } else {
-            //fetch card Via JTree
         }
         cardImageLabel.setIcon(ScryfallInteraction.getCardImage(c));
         cardNameDisplay.setText(c.getName());
@@ -600,7 +592,7 @@ public class GUI extends javax.swing.JFrame {
         }
         cardOracleDisplay.setText(c.getOracleText());
     }
-    
+
     private void setResultTable(ArrayList<Card> cardList) {
         //updating the size of our JTable
         tableModel.setRowCount(cardList.size());
@@ -616,12 +608,12 @@ public class GUI extends javax.swing.JFrame {
             resultTable.setValueAt(currentCard.getColorIdentity(), i, 4);
         }
     }
-    
+
     private void addRow() {
         tableModel.addRow(new Object[5]);
         tableModel.fireTableDataChanged();
     }
-    
+
     private void clearResultTable() {
         tableModel = new DefaultTableModel(
                 new Object[][]{},
