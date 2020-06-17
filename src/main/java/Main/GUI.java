@@ -50,6 +50,9 @@ public class GUI extends javax.swing.JFrame {
         deckTree.addTreeSelectionListener((TreeSelectionEvent e) -> {
             TreeNode node = (TreeNode) deckTree.getLastSelectedPathComponent();
             resultTable.clearSelection();
+            
+      
+            
             if (node == null) {
                 return;
             }
